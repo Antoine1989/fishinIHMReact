@@ -3,8 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container,Card,Col,ListGroup} from 'react-bootstrap';
 import FishinService from '../Service/FishinService';
 import React, {Component,useState,useEffect} from 'react'
-
-
+import './ListSpots.css'
+import ListCaptures from './ListCaptures';
 
 
 function ListSpots() {
@@ -24,25 +24,7 @@ function ListSpots() {
     
 
   return (
-     /* <div className= "container">
-          {
-              spots.map(
-                  spot=>
-                  <div key={spot.id}>
-        <Card>
-      <Card.Header>{spot.id}</Card.Header>
-      <Card.Body>
-        {spot.nomSpot}
-        {spot.ville}
-       
-      </Card.Body>
-    </Card>
-
-                  </div>
-              )
     
-    }
-    </div>*/
 
     <div >
     
@@ -58,12 +40,13 @@ function ListSpots() {
                 <ListGroup.Item>
               
                 <Card>
-                <Card.Header>{spot.id} : {spot.nomSpot} </Card.Header>
+                <Card.Header className="entete">{spot.nomSpot} </Card.Header>
                 <Card.Body>
                     {spot.nomSpot}
                     {spot.ville}
                 
                 </Card.Body>
+                <ListCaptures spot={spot.id}/>
          </Card>
         
                 </ListGroup.Item>
