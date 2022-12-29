@@ -20,6 +20,10 @@ class FishinService {
         return axios.get("http://localhost:8082/api/v1/spots/"+spotId+"/captures");
 
     }
+
+    postCaptures(spotId){
+        return axios.post("http://localhost:8082/api/v1/spots/"+spotId+"/captures");
+    }
      getDonnees() {
         
         const reponse =  axios.get(CAPTURES_API_URL)

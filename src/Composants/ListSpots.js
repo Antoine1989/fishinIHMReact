@@ -39,15 +39,14 @@ function ListSpots() {
             <ListGroup variant="flush">
                 <ListGroup.Item>
               
-                <Card>
-                <Card.Header className="entete">{spot.nomSpot} </Card.Header>
-                <Card.Body>
-                    {spot.nomSpot}
-                    {spot.ville}
-                
+                <Card className="border-white">
+                <Card.Header className="entete">{spot.nomSpot} {spot.ville}</Card.Header>
+                <Card.Body >
+                    
+                    <ListCaptures spot={spot.id}/>
                 </Card.Body>
-                <ListCaptures spot={spot.id}/>
-         </Card>
+                
+                </Card>
         
                 </ListGroup.Item>
             </ListGroup>

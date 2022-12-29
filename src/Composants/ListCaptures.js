@@ -4,6 +4,7 @@ import {Container,Card,Col,ListGroup} from 'react-bootstrap';
 import FishinService from '../Service/FishinService';
 import React, {Component,useState,useEffect} from 'react'
 import { useParams } from 'react-router-dom';
+import './ListCaptures.css'
 
 function ListCaptures(props) {
 
@@ -29,11 +30,11 @@ function ListCaptures(props) {
         ;
     };
     // test récupération id des params url 
-    const { spotId } = useParams();
+    /*const { spotId } = useParams();
     console.log('spot Id: ',spotId);
 
     const capturesSpot = getDonnees.toString;
-    console.log('captures spotId'+capturesSpot);
+    console.log('captures spotId'+capturesSpot);*/
     //const {spot}= props;
    // console.log ('props capture spot : '+spot);
     
@@ -45,12 +46,12 @@ function ListCaptures(props) {
     
     { captures.map(
         capture=>
-        <div key={capture.id}>
-        <Container className='p-4'>              
-                <Card.Body>
-                    {capture.type}
-                    {capture.nomCapture} 
-                </Card.Body>
+        <div key={capture.id} className>
+        <Container className='p-4 captures'>              
+               
+                    {capture.type}: 
+                      {capture.nomCapture} 
+                
         </Container>
        
         </div>
