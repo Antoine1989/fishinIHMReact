@@ -1,7 +1,11 @@
 
 .entete{
 
-    background-color: rgb(114, 185, 160);
-    color:azure;
-    font-weight: 500;
+    background-color: rgb(114, 185, 160) !important;
+    color:azure !important;
+    font-weight: 500 !important;
 }
+
+.entete:hover {
+    background-color: gold !important;
+  }
