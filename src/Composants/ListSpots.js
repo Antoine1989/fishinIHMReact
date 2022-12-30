@@ -1,13 +1,18 @@
 //import 'bootsrap/dist/css/bootsrap.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container,Card,Col,ListGroup,Accordion} from 'react-bootstrap';
+import {Container,Card,Col,Row,ListGroup,Accordion} from 'react-bootstrap';
 import FishinService from '../Service/FishinService';
 import React, {Component,useState,useEffect} from 'react'
 import './ListSpots.css'
 import ListCaptures from './ListCaptures';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnchor, faFish } from '@fortawesome/free-solid-svg-icons';
-
+import LobsterIcon from '../ComposantsIcons/LobsterIcon';
+import CrabIcon from '../ComposantsIcons/CrabIcon';
+import FishIcon from '../ComposantsIcons/FishIcon';
+import SquidIcon from '../ComposantsIcons/SquidIcon';
+import AnchorIcon from '../ComposantsIcons/AnchorIcon';
+import '../ComposantsIcons/ComposantsIcons.css';
 
 function ListSpots() {
 
@@ -29,6 +34,13 @@ function ListSpots() {
     
 
     <div >
+    <Container className='p-4 '>
+        <Row>
+            <Col md={{ span: 4, offset: 4 }}>
+            <AnchorIcon/>        
+            </Col>   
+         </Row>
+    </Container>
     
     { spots.map(
         spot=>
@@ -44,12 +56,15 @@ function ListSpots() {
                     
                 
         
-                <Accordion.Header style={{ backgroundColor: '#07E79D' }}>{spot.nomSpot} <FontAwesomeIcon icon={faAnchor} />{/*{spot.ville}*/}</Accordion.Header>
+                <Accordion.Header style={{ backgroundColor: '#07E79D' }}>{spot.nomSpot}<Container className='ml-4 '> <FontAwesomeIcon icon={faAnchor} /></Container>{/*{spot.ville}*/}</Accordion.Header>
                {/* <Card.Body >*/}
                 <Accordion.Body>
-                <FontAwesomeIcon icon={faFish} />
-                <FontAwesomeIcon icon={faFish} />
-                    <ListCaptures spot={spot.id}/>
+                <FishIcon/>
+                <CrabIcon/>
+                <LobsterIcon/>
+                <SquidIcon/>
+                
+                 <ListCaptures spot={spot.id}/>
                 </Accordion.Body>
                {/* </Card.Body>*/}
                

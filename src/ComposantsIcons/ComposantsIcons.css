@@ -1,0 +1,12 @@
+.bg-gris{
+    background-color: rgba(128, 128, 128, 0.856);
+    border-color: white;
+}
+.bg-gris:hover{
+    background-color: rgb(114, 185, 160);
+    transition-duration: 10ms;
+    border-color: rgba(7, 231, 157, 0.842);
+}
+.margin{
+    margin-right: 2px;
+}
