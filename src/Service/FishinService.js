@@ -37,6 +37,9 @@ class FishinService {
     getSpots(){
         return axios.get(SPOTS_API_URL);
     }
+    addSpot(){
+        return axios.post(SPOTS_API_URL);
+    }
 }
 
 export default new FishinService();

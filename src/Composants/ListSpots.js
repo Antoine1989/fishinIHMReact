@@ -5,6 +5,7 @@ import FishinService from '../Service/FishinService';
 import React, {Component,useState,useEffect} from 'react'
 import './ListSpots.css'
 import ListCaptures from './ListCaptures';
+import ModalSpot from './ModalSpot';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnchor, faFish } from '@fortawesome/free-solid-svg-icons';
 import LobsterIcon from '../ComposantsIcons/LobsterIcon';
@@ -13,6 +14,7 @@ import FishIcon from '../ComposantsIcons/FishIcon';
 import SquidIcon from '../ComposantsIcons/SquidIcon';
 import AnchorIcon from '../ComposantsIcons/AnchorIcon';
 import '../ComposantsIcons/ComposantsIcons.css';
+import { FaAudioDescription } from 'react-icons/fa';
 
 function ListSpots() {
 
@@ -20,6 +22,7 @@ function ListSpots() {
 
     useEffect(()=>{
         getSpots()
+        addSpot()
     }, [])
 
     const getSpots=()=>{
@@ -28,6 +31,13 @@ function ListSpots() {
             console.log(response.data);
         });
     };
+
+    const addSpot=()=>{
+        FishinService.addSpot().then((response)=>{
+            setSpots(response.data)
+            console.log(response.data);
+        });
+    }
     
 
   return (
@@ -37,7 +47,8 @@ function ListSpots() {
     <Container className='p-4 '>
         <Row>
             <Col md={{ span: 4, offset: 4 }}>
-            <AnchorIcon/>        
+            {/*<AnchorIcon/> */}
+            <ModalSpot/>       
             </Col>   
          </Row>
     </Container>

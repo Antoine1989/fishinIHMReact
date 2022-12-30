@@ -65,7 +65,7 @@ function ListCaptures(props) {
         <div key={capture.id} className>
         <Container className='p-4 captures'>                             
                   <Row><span hidden="hidden"> {capture.type}: </span>
-                   <span className="margin"> {capture.nomCapture} </span>
+                   <span className="margin"> {capture.nomCapture} </span><span className="margin"> {capture.date_peche} </span>
               {capture.type==="POISSON"? <FaFish className='margin'/>:(capture.type==="CRUSTACE"?<GiCrab className='margin'/>:<GiSquid className='margin'/>)}  </Row> 
      {/*((props) => {
          let icone={captures.}

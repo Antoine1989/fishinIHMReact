@@ -18,7 +18,7 @@ function AnchorIcon() {
       delay={{ show: 250, hide: 400 }}
       overlay={renderTooltip}
     >
-      <Button className="square bg-gris rounded-9 ms-3 me-3"><FaAnchor/></Button>
+      <Button  className="square bg-gris rounded-9 ms-3 me-3"><FaAnchor/></Button>
     </OverlayTrigger>
   );
 }
