@@ -14,7 +14,8 @@ import FishIcon from '../ComposantsIcons/FishIcon';
 import SquidIcon from '../ComposantsIcons/SquidIcon';
 import AnchorIcon from '../ComposantsIcons/AnchorIcon';
 import '../ComposantsIcons/ComposantsIcons.css';
-import { FaAudioDescription } from 'react-icons/fa';
+import './ModalCapture';
+import ModalCapture from './ModalCapture';
 
 function ListSpots() {
 
@@ -38,6 +39,7 @@ function ListSpots() {
             console.log(response.data);
         });
     }
+   
     
 
   return (
@@ -70,7 +72,7 @@ function ListSpots() {
                 <Accordion.Header style={{ backgroundColor: '#07E79D' }}>{spot.nomSpot}<Container className='ml-4 '> <FontAwesomeIcon icon={faAnchor} /></Container>{/*{spot.ville}*/}</Accordion.Header>
                {/* <Card.Body >*/}
                 <Accordion.Body>
-                <FishIcon/>
+                <ModalCapture/>
                 <CrabIcon/>
                 <LobsterIcon/>
                 <SquidIcon/>
