@@ -21,8 +21,8 @@ class FishinService {
 
     }
 
-    postCaptures(spotId){
-        return axios.post("http://localhost:8082/api/v1/spots/"+spotId+"/captures");
+    postCapture(spotId,capturesdata){
+        return axios.post("http://localhost:8082/api/v1/spots/"+spotId+"/captures",capturesdata);
     }
      getDonnees() {
         
