@@ -101,7 +101,7 @@ function ModalCapture(props) {
     FishinService.postCapture(spot,capturedata).then((result)=>{
      setMessage(result.data)
       console.log(result.data);
-      handleClose= () => setShow(false);
+      handleClose();
   });
   }
   const today = new Date();

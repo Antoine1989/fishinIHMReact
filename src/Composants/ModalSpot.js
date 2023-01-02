@@ -20,14 +20,14 @@ function ModalSpot() {
      Ajouter un nouveau spot de pêche
     </Tooltip>
   );
-  const[nomspot,setNomspot]=useState('');
+  const[nomSpot,setNomSpot]=useState('');
   const[ville,setVille]=useState('');
   const[message,setMessage]=useState('');
 
   const handlenomspot=(event)=>{
-    const nom_spot=event.target.value;
-    console.log(nom_spot);
-    setNomspot(nom_spot);
+    const nomSpot=event.target.value;
+    console.log(nomSpot);
+    setNomSpot(nomSpot);
   }
 
   const handleville=(event)=>{
@@ -38,7 +38,7 @@ function ModalSpot() {
 
   const addSpot=(e)=>{
     e.preventDefault();
-    const spotdata={nom_spot:nomspot, ville:ville,user:{user_id:1,nom:"Bob",password:"56270 Ploemeur"}}
+    const spotdata={nomSpot:nomSpot, ville:ville,user:{user_id:1,nom:"Bob",password:"56270 Ploemeur"}}
     FishinService.addSpot(spotdata).then((result)=>{
      setMessage(result.data)
       console.log(result.data);
