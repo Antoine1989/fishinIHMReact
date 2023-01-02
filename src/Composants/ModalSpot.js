@@ -8,6 +8,7 @@ import { FaAnchor} from "react-icons/fa";
 import '../ComposantsIcons/ComposantsIcons.css';
 import './SelectPoissons';
 import SelectPoisson from './SelectPoissons';
+import FishinService from '../Service/FishinService';
 
 function ModalSpot() {
   const [show, setShow] = useState(false);
@@ -19,6 +20,33 @@ function ModalSpot() {
      Ajouter un nouveau spot de pêche
     </Tooltip>
   );
+  const[nomspot,setNomspot]=useState('');
+  const[ville,setVille]=useState('');
+  const[message,setMessage]=useState('');
+
+  const handlenomspot=(event)=>{
+    const nom_spot=event.target.value;
+    console.log(nom_spot);
+    setNomspot(nom_spot);
+  }
+
+  const handleville=(event)=>{
+    const ville=event.target.value;
+    console.log(ville);
+    setVille(ville);
+  }
+
+  const addSpot=(e)=>{
+    e.preventDefault();
+    const spotdata={nom_spot:nomspot, ville:ville,user:{user_id:1,nom:"Bob",password:"56270 Ploemeur"}}
+    FishinService.addSpot(spotdata).then((result)=>{
+     setMessage(result.data)
+      console.log(result.data);
+      handleClose();
+  });
+  }
+
+
 
   return (
     <>
@@ -36,16 +64,16 @@ function ModalSpot() {
           <Modal.Title>Ajout d'un nouveau spot</Modal.Title>
         </Modal.Header>
         <Form.Label>Nom du spot</Form.Label>
-        <Form.Control type="spot" placeholder="spot" />
+        <Form.Control type="spot" name="nom_spot"placeholder="spot"  onChange={(e)=>handlenomspot(e)} />
         <Form.Label>Ville</Form.Label>
-        <Form.Control type="ville" placeholder="ville" />
+        <Form.Control name="ville" type="ville" placeholder="ville"  onChange={(e)=>handleville(e)} />
        
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
+          <Button variant="primary" onClick={addSpot}>
+            Ajouter
           </Button>
         </Modal.Footer>
       </Modal>

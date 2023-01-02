@@ -66,20 +66,7 @@ function ListCaptures(props) {
         <Container className='p-4 captures'>                             
                   <Row><span hidden="hidden"> {capture.type}: </span>
                    <span className="margin"> {capture.nomCapture} </span><span className="margin"> {capture.date_peche} </span>
-              {capture.type==="POISSON"? <FaFish className='margin'/>:(capture.type==="CRUSTACE"?<GiCrab className='margin'/>:<GiSquid className='margin'/>)}  </Row> 
-     {/*((props) => {
-         let icone={captures.}
-    if ({props.type}==="POISSON" ){
-        return (<FaFish/>)
-     }
-     else if ({capture.type}==="CEPHALOPODE" ){
-        return (<GiSquid/>)
-     }
-     else if ({capture.type}==="CRUSTACE" ){
-        return (<GiCrab/>)
-     }        
-    else     return null;
-            })()*/}            
+              {capture.type==="POISSON"? <FaFish className='margin'/>:(capture.type==="CRUSTACE"?<GiCrab className='margin'/>:<GiSquid className='margin'/>)}  </Row>             
         </Container>
        
         </div>
