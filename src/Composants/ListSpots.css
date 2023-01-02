@@ -9,3 +9,18 @@
 .entete:hover {
     background-color: gold !important;
   }
+
+  .accordion-button {
+    background-color: rgba(149, 174, 179, 0.856);
+    border-radius: 10px;
+  }
+  .accordion-button:hover {
+    background-color: rgb(114, 185, 160) !important;
+    color: aliceblue;
+  }
+  .accordion-button:focus {
+    box-shadow: none;
+  }
+  .accordion-button:not(.collapsed) {
+    color: #212529;
+  }

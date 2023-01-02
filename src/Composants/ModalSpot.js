@@ -7,7 +7,6 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import { FaAnchor} from "react-icons/fa";
 import '../ComposantsIcons/ComposantsIcons.css';
 import './SelectPoissons';
-import SelectPoisson from './SelectPoissons';
 import FishinService from '../Service/FishinService';
 
 function ModalSpot() {

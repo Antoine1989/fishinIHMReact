@@ -46,7 +46,7 @@ function ModalCapture(props) {
   }
   const handlenomcapture=(event)=>{
     const nom_capture=event.target.value;
-    console.log(nom_capture);
+    console.log('nom capture'+nom_capture);
     setNomcapture(nom_capture);
   }
 
@@ -126,7 +126,7 @@ function ModalCapture(props) {
         <Form.Label style={{textAlign: "center"}}>Type</Form.Label>
         <Form.Control name="type" defaultValue="POISSON" onChange={(e)=>handletype(e)} disabled/>
         <Form.Label style={{textAlign: "center"}}>Nom</Form.Label>
-        <SelectPoisson name="nom_capture" onChange={(e)=>handlenomcapture(e)} defaultValue=''/>
+        <SelectPoisson name="nom_capture" handlenomcapture={handlenomcapture} defaultValue=''/>
         <Form.Label style={{textAlign: "center"}}>Technique de pêche</Form.Label>
         <SelectTechnique name="technique" onChange={(e)=>handletechnique(e)}/>
         <Form.Label style={{textAlign: "center"}}>Quantité</Form.Label>
