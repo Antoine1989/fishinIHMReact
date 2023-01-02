@@ -39,7 +39,7 @@ function ModalSpot() {
         <Form.Control type="spot" placeholder="spot" />
         <Form.Label>Ville</Form.Label>
         <Form.Control type="ville" placeholder="ville" />
-        <SelectPoisson/>
+       
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

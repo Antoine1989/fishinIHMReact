@@ -72,7 +72,7 @@ function ListSpots() {
                 <Accordion.Header style={{ backgroundColor: '#07E79D' }}>{spot.nomSpot}<Container className='ml-4 '> <FontAwesomeIcon icon={faAnchor} /></Container>{/*{spot.ville}*/}</Accordion.Header>
                {/* <Card.Body >*/}
                 <Accordion.Body>
-                <ModalCapture/>
+                <ModalCapture spot={spot.id}/>
                 <CrabIcon/>
                 <LobsterIcon/>
                 <SquidIcon/>
