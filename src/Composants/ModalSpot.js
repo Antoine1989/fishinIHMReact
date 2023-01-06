@@ -9,7 +9,7 @@ import '../ComposantsIcons/ComposantsIcons.css';
 import './SelectPoissons';
 import FishinService from '../Service/FishinService';
 
-function ModalSpot() {
+function ModalSpot(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -22,6 +22,7 @@ function ModalSpot() {
   const[nomSpot,setNomSpot]=useState('');
   const[ville,setVille]=useState('');
   const[message,setMessage]=useState('');
+  const [spots, updateSpots]=useState([]);
 
   const handlenomspot=(event)=>{
     const nomSpot=event.target.value;
@@ -37,12 +38,16 @@ function ModalSpot() {
 
   const addSpot=(e)=>{
     e.preventDefault();
+    const {getSpots}=props;
     const spotdata={nomSpot:nomSpot, ville:ville,user:{user_id:1,nom:"Bob",password:"56270 Ploemeur"}}
     FishinService.addSpot(spotdata).then((result)=>{
+      
      setMessage(result.data)
       console.log(result.data);
-      handleClose();
-  });
+      //handleClose();
+      getSpots();
+  })
+  handleClose();;
   }
 
 
@@ -71,7 +76,7 @@ function ModalSpot() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={addSpot}>
+          <Button className="bg-gris" onClick={addSpot}>
             Ajouter
           </Button>
         </Modal.Footer>

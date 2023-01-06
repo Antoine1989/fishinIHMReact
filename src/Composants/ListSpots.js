@@ -50,7 +50,8 @@ function ListSpots() {
         <Row>
             <Col md={{ span: 4, offset: 4 }}>
             {/*<AnchorIcon/> */}
-            <ModalSpot/>       
+            {/*Test getSpots dans modale pour avoir un refresh après le post*/}
+            <ModalSpot getSpots={getSpots}/>       
             </Col>   
          </Row>
     </Container>
