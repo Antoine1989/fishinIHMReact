@@ -21,15 +21,7 @@ import ListCaptures from './ListCaptures';
 
 
 function ModalCapture(props) {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const renderTooltip = (props) => (
-    <Tooltip id="button-tooltip" {...props}>
-     Ajouter un nouveau poisson
-    </Tooltip>
-  );
+  
 
   const[message,setMessage]=useState('');
   const[type,setType]=useState('');
@@ -150,6 +142,33 @@ const getCaptures=()=>{
     return <GiSquid/>
     else return ''
   }
+
+  function textTool(){
+    if(capture==="POISSON"){
+      return "Ajouter un nouveau poisson"
+    }
+    else if(capture==="CRAB"){
+      return " Ajouter un crustacé de type crabe"
+    }
+    else if (capture==="PALIN"){
+      return "Ajouter un crustacé de type crevettes, homard ou langouste"
+    }
+    else if (capture==="CEPHALOPODE")
+    return " Ajouter un céphalopode de type poulpe, calmar ou seiche"
+    else return ''
+  }
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+     {textTool()}
+    </Tooltip>
+  );
+
+  
 
   return (
     <>
