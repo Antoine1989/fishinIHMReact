@@ -2,20 +2,23 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import './ListCaptures.css';
-export default class SelectPoisson extends Component {
-   
-    /*constructor(props) {
-        super(props);
-        this.handlenomcapture=this.handlenomcapture.bind(this);
-    }
-    handlenomcapture(){           
+
+//export default class SelectPoisson extends Component {
+  function SelectPoisson (props){
+   // constructor(props) {
+        //super(props);
+       // this.handlenomcapture=this.handlenomcapture.bind(this);
+   // }
+   /* handlenomcapture(){           
        this.props.handlenomcapture();  
         console.log('handle props'+this.props.handlenomcapture());     
       }*/
-    render() {
-       let {handlenomcapture}=this.props;
-        console.log('props selectPoisson'+this.props)
-        var Data     = ['Aiglefin',
+    //render() {
+      // let handlenomcapture={(e)=>this.props.handlenomcapture(e)};
+      // console.log('props selectPoisson'+this.props.handlenomcapture())
+      //let {childToParent}=childToParent;
+
+        const data     = ['Aiglefin',
             'Anguille',
             'Baliste cabri',
             'Bar',
@@ -56,14 +59,15 @@ export default class SelectPoisson extends Component {
             
             ],
             MakeItem = function(X) {
-                return  <option><div key={X.toString()} className="key"></div> {X}</option>;
-                
+                return  <option key={X.toString()}> {X}</option>;
+                //<div key={X.toString()} className="key"></div>
                 
             };
 
 
-        return  <Form.Select aria-label="Default select example" onChange={(e)=>handlenomcapture(e)}>{Data.map(MakeItem)}</Form.Select>;
+        return  <Form.Select aria-label="Default select example"  onChange={(e)=>props.handlenomcapture(e)}>{data.map(MakeItem)}</Form.Select>;
 
-    }
+    //}
 
 };
+export default SelectPoisson;

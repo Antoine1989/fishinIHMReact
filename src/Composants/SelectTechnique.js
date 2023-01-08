@@ -14,7 +14,6 @@ export default class SelectTechnique extends Component {
             "Surfcasting",
             "Pêche au bouchon",
             "Pêche au leurre",
-            "Pêche à la Turlutte",
             "Pêche à l’appât (ver..)",
             "Pêche à l’appât (crevette grise)",
             "Pêche à l’appât (crabe mou)",           
@@ -30,7 +29,7 @@ export default class SelectTechnique extends Component {
                         
             ],
             MakeItem = function(X) {
-                return <option>{X}</option>;
+                return <option key={X.toString()}>{X}</option>;
             };
 
 

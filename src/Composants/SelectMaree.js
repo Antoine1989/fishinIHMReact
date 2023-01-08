@@ -11,7 +11,7 @@ export default class SelectMaree extends Component {
                                 
             ],
             MakeItem = function(X) {
-                return <option>{X}</option>;
+                return <option key={X.toString()}>{X}</option>;
             };
 
 

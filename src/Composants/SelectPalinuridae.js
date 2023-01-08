@@ -12,11 +12,11 @@ export default class SelectPalinuridae extends Component {
             'Langouste',
             ],
             MakeItem = function(X) {
-                return <option>{X}</option>;
+                return <option key={X.toString()}>{X}</option>;
             };
 
 
-        return <Form.Select aria-label="Default select example">{Data.map(MakeItem)}</Form.Select>;
+        return <Form.Select aria-label="Default select example" onChange={(e)=>this.props.handlenomcapture(e)}>{Data.map(MakeItem)}</Form.Select>;
 
     }
 

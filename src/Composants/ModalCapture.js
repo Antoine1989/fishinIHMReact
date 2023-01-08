@@ -28,7 +28,7 @@ function ModalCapture(props) {
 
   const[message,setMessage]=useState('');
  // const[type,setType]=useState('');
-  const[nomcapture,setNomcapture]=useState('');
+  const[nomCapture,setNomcapture]=useState('');
   const[technique,setTechnique]=useState('');
   const[quantite,setQuantite]=useState('');
   const[poids,setPoids]=useState('');
@@ -38,6 +38,12 @@ function ModalCapture(props) {
   const[coef,setCoef]=useState('');
   const[commentaires,setCommentaires]=useState('');
   const[photo,setPhoto]=useState('');
+
+  const [selectCapture, updateCapture] = useState([])
+
+  const [data, setData] = useState('');
+
+
 
 // pour rafraichir la page après un post
 
@@ -64,6 +70,10 @@ const getCaptures=()=>{
     console.log(type);
     setType(type);
   }*/
+  const childToParent = (childdata) => {
+    setData(childdata)
+     
+  }
   const handlenomcapture=(event)=>{
     const nom_capture=event.target.value;
     console.log('nom capture'+nom_capture);
@@ -72,6 +82,7 @@ const getCaptures=()=>{
 
   const handletechnique=(event)=>{
     const technique=event.target.value;
+    console.log('nom capture'+technique);
     setTechnique(technique);
   }
 
@@ -118,7 +129,7 @@ const getCaptures=()=>{
   const addCapture=(e)=>{
     e.preventDefault();
     const type=getCategory();
-    const capturedata={type:type,nom_capture:nomcapture, technique:technique,quantite:quantite,poids:poids,longueur:longueur,date:datepeche,maree:maree,coef:coef,commentaires:commentaires,photo:photo}
+    const capturedata={type:type,nom_capture:nomCapture, technique:technique,quantite:quantite,poids:poids,longueur:longueur,date:datepeche,maree:maree,coef:coef,commentaires:commentaires,photo:photo}
     FishinService.postCapture(spot,capturedata).then((result)=>{
      setMessage(result.data)
       console.log(result.data);
@@ -180,7 +191,7 @@ const getCaptures=()=>{
 
   function getSelect(){
     if(capture==="POISSON"){
-      return  <SelectPoisson name="nom_capture" handlenomcapture={handlenomcapture} defaultValue=''/>
+      return  <SelectPoisson name="nom_capture" handlenomcapture={handlenomcapture} selectCapture={selectCapture} updateCapture={updateCapture} childToParent={childToParent} defaultValue=''/>
     }
     else if(capture==="CRAB"){
       return <SelectCrab name="nom_capture" handlenomcapture={handlenomcapture} defaultValue=''/>
