@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { FaFish} from "react-icons/fa";
+import { GiCrab} from "react-icons/gi";
+import { GiShrimp} from "react-icons/gi";
+import { GiSquid} from "react-icons/gi";
 import '../ComposantsIcons/ComposantsIcons.css';
 import './SelectPoissons';
 import SelectTechnique from './SelectTechnique';
@@ -14,6 +17,8 @@ import SelectPoisson from './SelectPoissons';
 import SelectMaree from './SelectMaree';
 import '../ComposantsIcons/ComposantsIcons.css';
 import FishinService from '../Service/FishinService';
+import ListCaptures from './ListCaptures';
+
 
 function ModalCapture(props) {
   const [show, setShow] = useState(false);
@@ -39,6 +44,26 @@ function ModalCapture(props) {
   const[commentaires,setCommentaires]=useState('');
   const[photo,setPhoto]=useState('');
 
+// pour rafraichir la page après un post
+
+const [captures, setCaptures]=useState([])
+
+useEffect(()=>{
+    getCaptures()
+}, [])
+
+const {spot}= props;
+const getCaptures=()=>{
+  //captures=event.target.value;
+  FishinService.getCaptures2(spot).then((response)=>{
+    setCaptures(response.data)
+    console.log(response.data);
+});;
+}
+
+
+
+//
   const handletype=(event)=>{
     const type=event.target.value;
     console.log(type);
@@ -93,7 +118,7 @@ function ModalCapture(props) {
     setPhoto(photo);
   }
 
-  const {spot}= props;
+  /*const {spot}= props;*/
   console.log('spot id capture' + spot);
   const addCapture=(e)=>{
     e.preventDefault();
@@ -101,12 +126,30 @@ function ModalCapture(props) {
     FishinService.postCapture(spot,capturedata).then((result)=>{
      setMessage(result.data)
       console.log(result.data);
+      //rafraichir page
+      getCaptures(captures);
+      //
       handleClose();
   });
   }
   const today = new Date();
-  
+  const {capture}=props;
+  console.log('type capture props'+capture);
 
+  function getIcon(){
+    if(capture==="POISSON"){
+      return <FaFish/>
+    }
+    else if(capture==="CRAB"){
+      return <GiCrab/>
+    }
+    else if (capture==="PALIN"){
+      return <GiShrimp/>
+    }
+    else if (capture==="CEPHALOPODE")
+    return <GiSquid/>
+    else return ''
+  }
 
   return (
     <>
@@ -116,7 +159,9 @@ function ModalCapture(props) {
       delay={{ show: 250, hide: 400 }}
       overlay={renderTooltip}
     >
-         <Button  className="square bg-gris rounded-9 ms-3 me-3" onClick={handleShow} ><FaFish/></Button>
+         <Button  className="square bg-gris rounded-9 ms-3 me-3" onClick={handleShow} >
+           {getIcon()}           
+           </Button>
     </OverlayTrigger>
 
       <Modal show={show} onHide={handleClose} animation={false}>

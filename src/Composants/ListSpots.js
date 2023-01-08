@@ -40,7 +40,10 @@ function ListSpots() {
         });
     }
    
-    
+    const captureFish="POISSON";
+    const captureCrab="CRAB";
+    const capturePalin="PALIN";
+    const captureCephalopode="CEPHALOPODE";
 
   return (
     
@@ -73,10 +76,13 @@ function ListSpots() {
                 <Accordion.Header >{spot.nomSpot}<Container className='ml-4 '> <FontAwesomeIcon icon={faAnchor} /></Container>{/*{spot.ville}*/}</Accordion.Header>
                {/* <Card.Body >*/}
                 <Accordion.Body>
-                <ModalCapture spot={spot.id}/>
-                <CrabIcon/>
+                <ModalCapture spot={spot.id} capture={captureFish}/>
+                <ModalCapture spot={spot.id} capture={captureCrab}/>
+                <ModalCapture spot={spot.id} capture={capturePalin}/>
+                <ModalCapture spot={spot.id} capture={captureCephalopode}/>
+               {/* <CrabIcon/>
                 <LobsterIcon/>
-                <SquidIcon/>
+               <SquidIcon/>*/}
                 
                  <ListCaptures spot={spot.id}/>
                 </Accordion.Body>

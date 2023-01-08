@@ -4,17 +4,17 @@ import Form from 'react-bootstrap/Form';
 import './ListCaptures.css';
 export default class SelectPoisson extends Component {
    
-    constructor(props) {
+    /*constructor(props) {
         super(props);
         this.handlenomcapture=this.handlenomcapture.bind(this);
     }
     handlenomcapture(){           
-        this.props.handlenomcapture();  
+       this.props.handlenomcapture();  
         console.log('handle props'+this.props.handlenomcapture());     
-      }
+      }*/
     render() {
-        let {handlenomcapture}=this.props;
-        
+       let {handlenomcapture}=this.props;
+        console.log('props selectPoisson'+this.props)
         var Data     = ['Aiglefin',
             'Anguille',
             'Baliste cabri',

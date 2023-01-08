@@ -44,7 +44,7 @@ function ModalSpot(props) {
       
      setMessage(result.data)
       console.log(result.data);
-      //handleClose();
+      //recup du getSpots avec props de ListSpot
       getSpots();
   })
   handleClose();;
