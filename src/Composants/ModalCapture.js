@@ -27,7 +27,7 @@ function ModalCapture(props) {
   
 
   const[message,setMessage]=useState('');
-  const[type,setType]=useState('');
+ // const[type,setType]=useState('');
   const[nomcapture,setNomcapture]=useState('');
   const[technique,setTechnique]=useState('');
   const[quantite,setQuantite]=useState('');
@@ -58,12 +58,12 @@ const getCaptures=()=>{
 
 
 
-//
-  const handletype=(event)=>{
-    const type=event.target.value;
+
+ /* const handletype=()=>{
+    const type=getCategory();
     console.log(type);
     setType(type);
-  }
+  }*/
   const handlenomcapture=(event)=>{
     const nom_capture=event.target.value;
     console.log('nom capture'+nom_capture);
@@ -117,6 +117,7 @@ const getCaptures=()=>{
   console.log('spot id capture' + spot);
   const addCapture=(e)=>{
     e.preventDefault();
+    const type=getCategory();
     const capturedata={type:type,nom_capture:nomcapture, technique:technique,quantite:quantite,poids:poids,longueur:longueur,date:datepeche,maree:maree,coef:coef,commentaires:commentaires,photo:photo}
     FishinService.postCapture(spot,capturedata).then((result)=>{
      setMessage(result.data)
@@ -220,10 +221,10 @@ const getCaptures=()=>{
 
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
-          <Modal.Title>Ajout d'un nouveau poisson</Modal.Title>
+          <Modal.Title>AJOUT D'UN NOUVEAU {getCategory()}</Modal.Title>
         </Modal.Header>
         <Form.Label style={{textAlign: "center"}}>Type</Form.Label>
-        <Form.Control name="type" defaultValue={getCategory()} onChange={(e)=>handletype(e)} disabled/>
+        <Form.Control name="type" defaultValue={getCategory()} /*onChange={(e)=>handletype(e)}*/ disabled/>
         <Form.Label style={{textAlign: "center"}}>Nom</Form.Label>
        {getSelect()}
         <Form.Label style={{textAlign: "center"}}>Technique de pêche</Form.Label>
@@ -251,7 +252,7 @@ const getCaptures=()=>{
           <Button variant="secondary" onClick={handleClose}>
             Fermer
           </Button>
-          <Button className="bg-gris" onClick={addCapture}>
+          <Button className="bg-gris" type='submit' onClick={addCapture}>
             Ajouter
           </Button>
         </Modal.Footer>
