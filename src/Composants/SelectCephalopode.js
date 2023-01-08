@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-
+import Form from 'react-bootstrap/Form';
 export default class SelectCephalopode extends Component {
 
     render() {
@@ -15,7 +15,7 @@ export default class SelectCephalopode extends Component {
             };
 
 
-        return <select>{Data.map(MakeItem)}</select>;
+        return <Form.Select aria-label="Default select example">{Data.map(MakeItem)}</Form.Select>;
 
     }
 

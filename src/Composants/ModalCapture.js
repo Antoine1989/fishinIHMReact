@@ -14,6 +14,9 @@ import SelectTechnique from './SelectTechnique';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import SelectPoisson from './SelectPoissons';
+import SelectCrab from './SelectCrab';
+import SelectPalinuridae from './SelectPalinuridae';
+import SelectCephalopode from './SelectCephalopode';
 import SelectMaree from './SelectMaree';
 import '../ComposantsIcons/ComposantsIcons.css';
 import FishinService from '../Service/FishinService';
@@ -158,6 +161,38 @@ const getCaptures=()=>{
     else return ''
   }
 
+  function getCategory(){
+    if(capture==="POISSON"){
+      return "POISSON"
+    }
+    else if(capture==="CRAB"){
+      return "CRUSTACE"
+    }
+    else if (capture==="PALIN"){
+      return "CRUSTACE"
+    }
+    else if (capture==="CEPHALOPODE")
+    return "CEPHALOPODE"
+    else return ''
+  
+  }
+
+  function getSelect(){
+    if(capture==="POISSON"){
+      return  <SelectPoisson name="nom_capture" handlenomcapture={handlenomcapture} defaultValue=''/>
+    }
+    else if(capture==="CRAB"){
+      return <SelectCrab name="nom_capture" handlenomcapture={handlenomcapture} defaultValue=''/>
+    }
+    else if (capture==="PALIN"){
+      return <SelectPalinuridae name="nom_capture" handlenomcapture={handlenomcapture} defaultValue=''/>
+    }
+    else if (capture==="CEPHALOPODE")
+    return <SelectCephalopode name="nom_capture" handlenomcapture={handlenomcapture} defaultValue=''/>
+    else return ''
+
+  }
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -188,9 +223,9 @@ const getCaptures=()=>{
           <Modal.Title>Ajout d'un nouveau poisson</Modal.Title>
         </Modal.Header>
         <Form.Label style={{textAlign: "center"}}>Type</Form.Label>
-        <Form.Control name="type" defaultValue="POISSON" onChange={(e)=>handletype(e)} disabled/>
+        <Form.Control name="type" defaultValue={getCategory()} onChange={(e)=>handletype(e)} disabled/>
         <Form.Label style={{textAlign: "center"}}>Nom</Form.Label>
-        <SelectPoisson name="nom_capture" handlenomcapture={handlenomcapture} defaultValue=''/>
+       {getSelect()}
         <Form.Label style={{textAlign: "center"}}>Technique de pêche</Form.Label>
         <SelectTechnique name="technique" onChange={(e)=>handletechnique(e)}/>
         <Form.Label style={{textAlign: "center"}}>Quantité</Form.Label>
