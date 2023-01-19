@@ -70,12 +70,16 @@ const getCaptures=()=>{
     console.log(type);
     setType(type);
   }*/
-  const childToParent = (childdata) => {
-    setData(childdata)
+  const [enfant, setEnfant] = useState([])
+  const click = (stateEnfant) => {
+    const enfant=stateEnfant;
+    setEnfant(stateEnfant)
      
   }
+  ////////////////////////
   const handlenomcapture=(event)=>{
     const nom_capture=event.target.value;
+    
     console.log('nom capture'+nom_capture);
     setNomcapture(nom_capture);
   }
@@ -191,7 +195,7 @@ const getCaptures=()=>{
 
   function getSelect(){
     if(capture==="POISSON"){
-      return  <SelectPoisson name="nom_capture" handlenomcapture={handlenomcapture} selectCapture={selectCapture} updateCapture={updateCapture} childToParent={childToParent} defaultValue=''/>
+      return  <SelectPoisson name="nom_capture" handlenomcapture={handlenomcapture} selectCapture={selectCapture} updateCapture={updateCapture} click={click} defaultValue=''/>
     }
     else if(capture==="CRAB"){
       return <SelectCrab name="nom_capture" handlenomcapture={handlenomcapture} defaultValue=''/>

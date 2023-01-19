@@ -5,6 +5,7 @@ import FishinService from '../Service/FishinService';
 import React, {Component,useState,useEffect} from 'react'
 import './ListSpots.css'
 import ListCaptures from './ListCaptures';
+import ModalDelete from './ModalDelete';
 import ModalSpot from './ModalSpot';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnchor, faFish } from '@fortawesome/free-solid-svg-icons';
@@ -24,6 +25,7 @@ function ListSpots() {
     useEffect(()=>{
         getSpots()
         addSpot()
+      
     }, [])
 
     const getSpots=()=>{
@@ -39,6 +41,15 @@ function ListSpots() {
             console.log(response.data);
         });
     }
+    const[message,setMessage]=useState('');
+   /*const deleteSpot=(id)=>{  
+        FishinService.deleteSpot(id).then((response)=>{
+            setSpots(spots.filter(spot =>{return spot.id !== id;}))
+            console.log(response.data)
+            setMessage(response.data)
+            getSpots();
+        });
+    }*/
    
     const captureFish="POISSON";
     const captureCrab="CRAB";
@@ -73,7 +84,9 @@ function ListSpots() {
                     
                 
         
-                <Accordion.Header >{spot.nomSpot}<Container className='ml-4 '> <FontAwesomeIcon icon={faAnchor} /></Container>{/*{spot.ville}*/}</Accordion.Header>
+                <Accordion.Header >{spot.nomSpot}<Container className='ml-4 '> <FontAwesomeIcon icon={faAnchor} />
+               <ModalDelete spot={spot.id} getSpots={getSpots}/>
+                </Container>{/*{spot.ville}*/}</Accordion.Header>
                {/* <Card.Body >*/}
                 <Accordion.Body>
                 <ModalCapture spot={spot.id} capture={captureFish}/>
