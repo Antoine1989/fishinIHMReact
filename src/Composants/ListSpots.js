@@ -21,11 +21,11 @@ import ModalCapture from './ModalCapture';
 function ListSpots() {
 
     const [spots, setSpots]=useState([])
-
+    const [captures, setCaptures]=useState([])
     useEffect(()=>{
         getSpots()
         addSpot()
-      
+      //getCaptures()
     }, [])
 
     const getSpots=()=>{
@@ -41,6 +41,17 @@ function ListSpots() {
             console.log(response.data);
         });
     }
+   /* const getCaptures=(spot)=>{
+       // var spot=spot;
+        
+        console.log('getCaptures spot Id: ',spot);
+        FishinService.getCaptures2(spot).then((response)=>{
+            setCaptures(response.data)
+            console.log(response.data);
+        });
+    };*/
+
+    
     const[message,setMessage]=useState('');
    /*const deleteSpot=(id)=>{  
         FishinService.deleteSpot(id).then((response)=>{
@@ -89,7 +100,7 @@ function ListSpots() {
                 </Container>{/*{spot.ville}*/}</Accordion.Header>
                {/* <Card.Body >*/}
                 <Accordion.Body>
-                <ModalCapture spot={spot.id} capture={captureFish}/>
+                <ModalCapture spot={spot.id} capture={captureFish}  /*getCaptures={getCaptures}*//>
                 <ModalCapture spot={spot.id} capture={captureCrab}/>
                 <ModalCapture spot={spot.id} capture={capturePalin}/>
                 <ModalCapture spot={spot.id} capture={captureCephalopode}/>
@@ -97,7 +108,7 @@ function ListSpots() {
                 <LobsterIcon/>
                <SquidIcon/>*/}
                 
-                 <ListCaptures spot={spot.id}/>
+                 <ListCaptures spot={spot.id}  getSpots={getSpots}/>
                 </Accordion.Body>
                {/* </Card.Body>*/}
                

@@ -9,31 +9,37 @@ import { GiSquid} from "react-icons/gi";
 import { FaFish } from "react-icons/fa";
 import { GiCrab} from "react-icons/gi";
 import '../ComposantsIcons/ComposantsIcons.css';
-
+import ModalDeleteCapture from './ModalDeleteCapture';
 
 function ListCaptures(props) {
 
     const [captures, setCaptures]=useState([])
+    const [spots, setSpots]=useState([])
 
     useEffect(()=>{
         getCaptures()
+        
     }, [])
+    
 
     const {spot}= props;
     console.log('spot Id2: '+spot);
     const getCaptures=()=>{
         //var {spotId}=props;
+        const {getSpots}=props;
         console.log('getCaptures spot Id: ',spot);
         FishinService.getCaptures2(spot).then((response)=>{
             setCaptures(response.data)
+           // setSpots(response.data);
+            getSpots();
             console.log(response.data);
         });
     };
 
-    const getDonnees=()=>{
+    /*const getDonnees=()=>{
         FishinService.getDonnees()
         ;
-    };
+    };/
 
     /*const type=()=>{
         getDonnees().type;
@@ -62,11 +68,11 @@ function ListCaptures(props) {
     
     { captures.map(
         capture=>
-        <div key={capture.id} className>
+        <div key={capture.id} >
         <Container className='p-4 captures'>                             
                   <Row><span hidden="hidden"> {capture.type}: </span>
                    <span className="margin"> {capture.nomCapture} </span><span className="margin"> {capture.date_peche} </span>
-              {capture.type==="POISSON"? <FaFish className='margin'/>:(capture.type==="CRUSTACE"?<GiCrab className='margin'/>:<GiSquid className='margin'/>)}  </Row>             
+              {capture.type==="POISSON"? <FaFish className="margin"/>:(capture.type==="CRUSTACE"?<GiCrab className="margin"/>:<GiSquid className="margin"/>)}  <ModalDeleteCapture capture={capture.id} getCaptures={getCaptures}/> </Row>             
         </Container>
        
         </div>

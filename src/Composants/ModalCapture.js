@@ -51,16 +51,17 @@ const [captures, setCaptures]=useState([])
 
 useEffect(()=>{
     getCaptures()
+    
 }, [])
 
 const {spot}= props;
-const getCaptures=()=>{
+/*const getCaptures=()=>{
   //captures=event.target.value;
   FishinService.getCaptures2(spot).then((response)=>{
     setCaptures(response.data)
     console.log(response.data);
 });;
-}
+}*/
 
 
 
@@ -127,18 +128,32 @@ const getCaptures=()=>{
     const photo=event.target.value;
     setPhoto(photo);
   }
-
+  
+  const getCaptures=()=>{
+    //var {spotId}=props;
+    
+    console.log('getCaptures spot Id: ',spot);
+    FishinService.getCaptures2(spot).then((response)=>{
+        setCaptures(response.data)
+        console.log(response.data);
+    });
+}
   /*const {spot}= props;*/
   console.log('spot id capture' + spot);
   const addCapture=(e)=>{
     e.preventDefault();
     const type=getCategory();
+    
+    //const {getCaptures}=props;
+    //const {getCaptures}=props;
     const capturedata={type:type,nom_capture:nomCapture, technique:technique,quantite:quantite,poids:poids,longueur:longueur,date:datepeche,maree:maree,coef:coef,commentaires:commentaires,photo:photo}
     FishinService.postCapture(spot,capturedata).then((result)=>{
      setMessage(result.data)
       console.log(result.data);
       //rafraichir page
-      getCaptures(captures);
+      
+     
+      getCaptures();
       //
       handleClose();
   });
