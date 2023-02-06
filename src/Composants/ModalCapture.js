@@ -129,17 +129,29 @@ const {spot}= props;
     setPhoto(photo);
   }
   
-  const getCaptures=()=>{
-    //var {spotId}=props;
+  /*const getCaptures=()=>{
     
+    const {getSpots}=props;
     console.log('getCaptures spot Id: ',spot);
     FishinService.getCaptures2(spot).then((response)=>{
         setCaptures(response.data)
+        getSpots();
         console.log(response.data);
     });
-}
+}*/
+
+/*const getCaptures=()=>{
+  const {getCaptures}=props;
+  const {getSpots}=props;
+  getCaptures().then((response)=>{
+    setCaptures(response.data);
+    getSpots();
+});}*/
+
   /*const {spot}= props;*/
   console.log('spot id capture' + spot);
+  const {getCaptures}=props;
+  const {getSpots}=props;
   const addCapture=(e)=>{
     e.preventDefault();
     const type=getCategory();
@@ -152,14 +164,16 @@ const {spot}= props;
       console.log(result.data);
       //rafraichir page
       
-     
-      getCaptures();
-      //
       handleClose();
+      getCaptures();
+ 
+      //
+     
   });
   }
-  const today = new Date();
+  const today = new Date().getDate;
   const {capture}=props;
+
   console.log('type capture props'+capture);
 
   function getIcon(){

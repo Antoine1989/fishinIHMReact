@@ -41,15 +41,16 @@ function ListSpots() {
             console.log(response.data);
         });
     }
-   /* const getCaptures=(spot)=>{
+    const getCaptures=()=>{
        // var spot=spot;
         
-        console.log('getCaptures spot Id: ',spot);
-        FishinService.getCaptures2(spot).then((response)=>{
+        console.log('getCaptures spot Id: ',spots);
+        FishinService.getCaptures2(spots).then((response)=>{
             setCaptures(response.data)
             console.log(response.data);
+           
         });
-    };*/
+    };
 
     
     const[message,setMessage]=useState('');
@@ -100,10 +101,10 @@ function ListSpots() {
                 </Container>{/*{spot.ville}*/}</Accordion.Header>
                {/* <Card.Body >*/}
                 <Accordion.Body>
-                <ModalCapture spot={spot.id} capture={captureFish}  /*getCaptures={getCaptures}*//>
-                <ModalCapture spot={spot.id} capture={captureCrab}/>
-                <ModalCapture spot={spot.id} capture={capturePalin}/>
-                <ModalCapture spot={spot.id} capture={captureCephalopode}/>
+              {/* <ModalCapture spot={spot.id} capture={captureFish}  getSpots={getSpots} />
+                <ModalCapture spot={spot.id} capture={captureCrab} getSpots={getSpots}/>
+                <ModalCapture spot={spot.id} capture={capturePalin} getSpots={getSpots}/>
+                <ModalCapture spot={spot.id} capture={captureCephalopode} getSpots={getSpots}/>*/}
                {/* <CrabIcon/>
                 <LobsterIcon/>
                <SquidIcon/>*/}

@@ -10,7 +10,7 @@ import { FaFish } from "react-icons/fa";
 import { GiCrab} from "react-icons/gi";
 import '../ComposantsIcons/ComposantsIcons.css';
 import ModalDeleteCapture from './ModalDeleteCapture';
-
+import ModalCapture from './ModalCapture';
 function ListCaptures(props) {
 
     const [captures, setCaptures]=useState([])
@@ -21,12 +21,12 @@ function ListCaptures(props) {
         
     }, [])
     
-
+    const {getSpots}=props;
     const {spot}= props;
     console.log('spot Id2: '+spot);
     const getCaptures=()=>{
         //var {spotId}=props;
-        const {getSpots}=props;
+        
         console.log('getCaptures spot Id: ',spot);
         FishinService.getCaptures2(spot).then((response)=>{
             setCaptures(response.data)
@@ -59,13 +59,19 @@ function ListCaptures(props) {
 
     }
    }*/
-    
+   const captureFish="POISSON";
+   const captureCrab="CRAB";
+   const capturePalin="PALIN";
+   const captureCephalopode="CEPHALOPODE";
 
   return (
     
 
     < >
-    
+    <ModalCapture spot={spot} capture={captureFish}  getSpots={getSpots} getCaptures={getCaptures}/>
+    <ModalCapture spot={spot} capture={captureCrab}  getSpots={getSpots} getCaptures={getCaptures}/>
+    <ModalCapture spot={spot} capture={capturePalin}  getSpots={getSpots} getCaptures={getCaptures}/>
+    <ModalCapture spot={spot} capture={captureCephalopode} getSpots={getSpots} getCaptures={getCaptures}/>
     { captures.map(
         capture=>
         <div key={capture.id} >
