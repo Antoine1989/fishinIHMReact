@@ -8,6 +8,7 @@ import './ListCaptures.css';
 import { GiSquid} from "react-icons/gi";
 import { FaFish } from "react-icons/fa";
 import { GiCrab} from "react-icons/gi";
+import { GiShrimp} from "react-icons/gi";
 import '../ComposantsIcons/ComposantsIcons.css';
 import ModalDeleteCapture from './ModalDeleteCapture';
 import ModalCapture from './ModalCapture';
@@ -63,10 +64,8 @@ function ListCaptures(props) {
    const captureCrab="CRAB";
    const capturePalin="PALIN";
    const captureCephalopode="CEPHALOPODE";
-
+   
   return (
-    
-
     < >
     <ModalCapture spot={spot} capture={captureFish}  getSpots={getSpots} getCaptures={getCaptures}/>
     <ModalCapture spot={spot} capture={captureCrab}  getSpots={getSpots} getCaptures={getCaptures}/>
@@ -78,7 +77,8 @@ function ListCaptures(props) {
         <Container className='p-4 captures'>                             
                   <Row><span hidden="hidden"> {capture.type}: </span>
                    <span className="margin"> {capture.nomCapture} </span><span className="margin"> {capture.date_peche} </span>
-              {capture.type==="POISSON"? <FaFish className="margin"/>:(capture.type==="CRUSTACE"?<GiCrab className="margin"/>:<GiSquid className="margin"/>)}  <ModalDeleteCapture capture={capture.id} getCaptures={getCaptures}/> </Row>             
+              {capture.type==="POISSON"? <FaFish className="margin"/>:(capture.type==="CRUSTACE"&&(capture.nomCapture!==("Homard"||"Langouste"||"Bouquet"||"Crevettes"))?<GiCrab className="margin"/>:
+              (capture.type==="CRUSTACE"&&(capture.nomCapture===("Homard"||"Langouste"||"Bouquet"||"Crevettes"))?<GiShrimp className="margin"/>:<GiSquid className="margin"/>))}  <ModalDeleteCapture capture={capture.id} getCaptures={getCaptures}/> </Row>             
         </Container>
        
         </div>

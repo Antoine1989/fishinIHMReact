@@ -50,27 +50,10 @@ function ListSpots() {
             console.log(response.data);
            
         });
-    };
-
-    
+    };  
     const[message,setMessage]=useState('');
-   /*const deleteSpot=(id)=>{  
-        FishinService.deleteSpot(id).then((response)=>{
-            setSpots(spots.filter(spot =>{return spot.id !== id;}))
-            console.log(response.data)
-            setMessage(response.data)
-            getSpots();
-        });
-    }*/
-   
-    const captureFish="POISSON";
-    const captureCrab="CRAB";
-    const capturePalin="PALIN";
-    const captureCephalopode="CEPHALOPODE";
 
   return (
-    
-
     <div >
     <Container className='p-4 '>
         <Row>
@@ -86,40 +69,22 @@ function ListSpots() {
         spot=>
         <div key={spot.id}>
         <Container className='p-4 '>
-        <Col md="4">
-       
+        <Col md="4">      
             <ListGroup variant="flush">
-                <ListGroup.Item>
-              
+                <ListGroup.Item>            
                 <Card className="border-white ">
                 <Accordion >
-                    
-                
-        
                 <Accordion.Header >{spot.nomSpot}<Container className='ml-4 '> <FontAwesomeIcon icon={faAnchor} />
                <ModalDelete spot={spot.id} getSpots={getSpots}/>
-                </Container>{/*{spot.ville}*/}</Accordion.Header>
-               {/* <Card.Body >*/}
-                <Accordion.Body>
-              {/* <ModalCapture spot={spot.id} capture={captureFish}  getSpots={getSpots} />
-                <ModalCapture spot={spot.id} capture={captureCrab} getSpots={getSpots}/>
-                <ModalCapture spot={spot.id} capture={capturePalin} getSpots={getSpots}/>
-                <ModalCapture spot={spot.id} capture={captureCephalopode} getSpots={getSpots}/>*/}
-               {/* <CrabIcon/>
-                <LobsterIcon/>
-               <SquidIcon/>*/}
-                
+                </Container>
+                </Accordion.Header>
+                <Accordion.Body> 
                  <ListCaptures spot={spot.id}  getSpots={getSpots}/>
-                </Accordion.Body>
-               {/* </Card.Body>*/}
-               
-               </Accordion>
-                
+                </Accordion.Body>             
+               </Accordion>  
                 </Card>
-        
                 </ListGroup.Item>
-            </ListGroup>
-            
+            </ListGroup>          
         </Col>
         </Container>
         </div>
@@ -130,6 +95,5 @@ function ListSpots() {
     
   )
 }
-
 
 export default ListSpots;

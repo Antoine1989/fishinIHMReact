@@ -129,46 +129,20 @@ const {spot}= props;
     setPhoto(photo);
   }
   
-  /*const getCaptures=()=>{
-    
-    const {getSpots}=props;
-    console.log('getCaptures spot Id: ',spot);
-    FishinService.getCaptures2(spot).then((response)=>{
-        setCaptures(response.data)
-        getSpots();
-        console.log(response.data);
-    });
-}*/
+const {getSpots}=props;
 
-/*const getCaptures=()=>{
-  const {getCaptures}=props;
-  const {getSpots}=props;
-  getCaptures().then((response)=>{
-    setCaptures(response.data);
-    getSpots();
-});}*/
-
-  /*const {spot}= props;*/
   console.log('spot id capture' + spot);
   const {getCaptures}=props;
-  const {getSpots}=props;
+
   const addCapture=(e)=>{
     e.preventDefault();
     const type=getCategory();
-    
-    //const {getCaptures}=props;
-    //const {getCaptures}=props;
     const capturedata={type:type,nom_capture:nomCapture, technique:technique,quantite:quantite,poids:poids,longueur:longueur,date:datepeche,maree:maree,coef:coef,commentaires:commentaires,photo:photo}
     FishinService.postCapture(spot,capturedata).then((result)=>{
      setMessage(result.data)
       console.log(result.data);
-      //rafraichir page
-      
       handleClose();
       getCaptures();
- 
-      //
-     
   });
   }
   const today = new Date().getDate;
