@@ -12,6 +12,7 @@ import { GiShrimp} from "react-icons/gi";
 import '../ComposantsIcons/ComposantsIcons.css';
 import ModalDeleteCapture from './ModalDeleteCapture';
 import ModalCapture from './ModalCapture';
+import { icon } from '@fortawesome/fontawesome-svg-core';
 function ListCaptures(props) {
 
     const [captures, setCaptures]=useState([])
@@ -60,6 +61,32 @@ function ListCaptures(props) {
 
     }
    }*/
+
+   function nameToAnimalIcon(type){
+
+    if(type==="POISSON"){
+        return<FaFish className="margin"/>
+    }
+    else if(type==="CEPHALOPODE"){
+        return  <GiSquid className="margin"/>
+    }
+    else if (type==="PALINURIDAE"){
+   
+        return <GiShrimp className="margin"/>
+        
+    }
+  /*  else if (type==="CRUSTACE"&& name==="Langouste"){
+        return <GiShrimp className="margin"/>
+    }
+    else if (type==="CRUSTACE"&& name==="Bouquet"){
+        return <GiShrimp className="margin"/>
+    }
+    else if (type==="CRUSTACE"&& name==="Crevettes"){
+        return <GiShrimp className="margin"/>
+    }*/
+    
+    else return <GiCrab className="margin"/>;
+   }
    const captureFish="POISSON";
    const captureCrab="CRAB";
    const capturePalin="PALIN";
@@ -76,9 +103,13 @@ function ListCaptures(props) {
         <div key={capture.id} >
         <Container className='p-4 captures'>                             
                   <Row><span hidden="hidden"> {capture.type}: </span>
-                   <span className="margin"> {capture.nomCapture} </span><span className="margin"> {capture.date_peche} </span>
-              {capture.type==="POISSON"? <FaFish className="margin"/>:(capture.type==="CRUSTACE"&&(capture.nomCapture!==("Homard"||"Langouste"||"Bouquet"||"Crevettes"))?<GiCrab className="margin"/>:
-              (capture.type==="CRUSTACE"&&(capture.nomCapture===("Homard"||"Langouste"||"Bouquet"||"Crevettes"))?<GiShrimp className="margin"/>:<GiSquid className="margin"/>))}  <ModalDeleteCapture capture={capture.id} getCaptures={getCaptures}/> </Row>             
+                   <span className="margin"> {capture.nomCapture}  </span><span className="margin"> {capture.date_peche} </span>
+             {/* {capture.type==="POISSON"? <FaFish className="margin"/>:
+              (capture.type==="CRUSTACE"&&(capture.nomCapture!==("Homard"||"Langouste"||"Bouquet"||"Crevettes"))?<GiCrab className="margin"/>:
+              (capture.type==="CRUSTACE"&&(capture.nomCapture===("Homard"||"Langouste"||"Bouquet"||"Crevettes"))?<GiShrimp className="margin"/>:
+    <GiSquid className="margin"/>))}  */}
+                {nameToAnimalIcon(capture.type)}
+              <ModalDeleteCapture capture={capture.id} getCaptures={getCaptures}/> </Row>             
         </Container>
        
         </div>

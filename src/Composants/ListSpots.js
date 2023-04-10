@@ -58,8 +58,6 @@ function ListSpots() {
     <Container className='p-4 '>
         <Row>
             <Col md={{ span: 4, offset: 4 }}>
-            {/*<AnchorIcon/> */}
-            {/*Test getSpots dans modale pour avoir un refresh après le post*/}
             <ModalSpot getSpots={getSpots}/>       
             </Col>   
          </Row>

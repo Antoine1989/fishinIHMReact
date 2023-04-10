@@ -27,25 +27,20 @@ function ModalCapture(props) {
   
 
   const[message,setMessage]=useState('');
- // const[type,setType]=useState('');
   const[nomCapture,setNomcapture]=useState('');
   const[technique,setTechnique]=useState('');
   const[quantite,setQuantite]=useState('');
   const[poids,setPoids]=useState('');
   const[longueur,setLongueur]=useState('');
-  const[datepeche,setDatepeche]=useState('');
+  const[datepeche,setDatepeche]=useState();
   const[maree,setMaree]=useState('');
   const[coef,setCoef]=useState('');
   const[commentaires,setCommentaires]=useState('');
   const[photo,setPhoto]=useState('');
 
-  const [selectCapture, updateCapture] = useState([])
+ 
 
   const [data, setData] = useState('');
-
-
-
-// pour rafraichir la page après un post
 
 const [captures, setCaptures]=useState([])
 
@@ -55,34 +50,18 @@ useEffect(()=>{
 }, [])
 
 const {spot}= props;
-/*const getCaptures=()=>{
-  //captures=event.target.value;
-  FishinService.getCaptures2(spot).then((response)=>{
-    setCaptures(response.data)
-    console.log(response.data);
-});;
-}*/
 
-
-
-
- /* const handletype=()=>{
-    const type=getCategory();
-    console.log(type);
-    setType(type);
-  }*/
   const [enfant, setEnfant] = useState([])
   const click = (stateEnfant) => {
     const enfant=stateEnfant;
-    setEnfant(stateEnfant)
+    setEnfant(enfant)
      
   }
-  ////////////////////////
+
   const handlenomcapture=(event)=>{
-    const nom_capture=event.target.value;
-    
-    console.log('nom capture'+nom_capture);
-    setNomcapture(nom_capture);
+    const nomCapture=event.target.value;
+    console.log('nom capture'+nomCapture);
+    setNomcapture(nomCapture);
   }
 
   const handletechnique=(event)=>{
@@ -137,7 +116,7 @@ const {getSpots}=props;
   const addCapture=(e)=>{
     e.preventDefault();
     const type=getCategory();
-    const capturedata={type:type,nom_capture:nomCapture, technique:technique,quantite:quantite,poids:poids,longueur:longueur,date:datepeche,maree:maree,coef:coef,commentaires:commentaires,photo:photo}
+    const capturedata={type:type,nomCapture:nomCapture, technique:technique,quantite:quantite,poids:poids,longueur:longueur,date:datepeche,maree:maree,coef:coef,commentaires:commentaires,photo:photo}
     FishinService.postCapture(spot,capturedata).then((result)=>{
      setMessage(result.data)
       console.log(result.data);
@@ -188,7 +167,7 @@ const {getSpots}=props;
       return "CRUSTACE"
     }
     else if (capture==="PALIN"){
-      return "CRUSTACE"
+      return "PALINURIDAE"
     }
     else if (capture==="CEPHALOPODE")
     return "CEPHALOPODE"
@@ -198,7 +177,7 @@ const {getSpots}=props;
 
   function getSelect(){
     if(capture==="POISSON"){
-      return  <SelectPoisson name="nom_capture" handlenomcapture={handlenomcapture} selectCapture={selectCapture} updateCapture={updateCapture} click={click} defaultValue=''/>
+      return  <SelectPoisson name="nom_capture" handlenomcapture={handlenomcapture}  click={click} defaultValue='Lol'/>
     }
     else if(capture==="CRAB"){
       return <SelectCrab name="nom_capture" handlenomcapture={handlenomcapture} defaultValue=''/>
@@ -254,8 +233,8 @@ const {getSpots}=props;
         <Form.Label style={{textAlign: "center"}}>Longueur (cm)</Form.Label>
         <Form.Control name="longueur" onChange={(e)=>handlelongueur(e)}/>
         <Form.Label style={{textAlign: "center"}}>Date de la pêche </Form.Label>
-        <DatePicker  className="form-control"  name="date"
-        minDate={today} onChange={(e)=>handledatepeche(e)}/>
+        <DatePicker  className="form-control"  name="date" selected={datepeche}
+        minDate={today} onChange={date=>setDatepeche(date)/*(e)=>handledatepeche(e)*/} dateFormat="dd-MM-yyyy"/>
          <Form.Label style={{textAlign: "center"}}>Marée</Form.Label>
          <SelectMaree name="maree" onChange={(e)=>handlemaree(e)}/>
          <Form.Label style={{textAlign: "center"}}>Coefficient</Form.Label>
@@ -264,8 +243,6 @@ const {getSpots}=props;
         <Form.Control name="commentaires" onChange={(e)=>handlecommentaires(e)}/>
         <Form.Label style={{textAlign: "center"}}>Photo</Form.Label>
         <Form.Control name="photo" onChange={(e)=>handlephoto(e)}/>
-        {/*<Form.Label style={{textAlign: "center"}}>Nom du spot</Form.Label>
-        <Form.Control type="spot" defaultValue={spot} disabled/> */}
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Fermer

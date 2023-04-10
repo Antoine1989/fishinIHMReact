@@ -4,9 +4,10 @@ import Form from 'react-bootstrap/Form';
 
 export default class SelectPalinuridae extends Component {
 
+
     render() {
 
-        var Data     = ['Bouquet',
+        const data     = ['Bouquet',
             'Crevettes',
             'Homard',
             'Langouste',
@@ -16,7 +17,7 @@ export default class SelectPalinuridae extends Component {
             };
 
 
-        return <Form.Select aria-label="Default select example" onChange={(e)=>this.props.handlenomcapture(e)}>{Data.map(MakeItem)}</Form.Select>;
+        return <Form.Select aria-label="Default select example" onChange={(e)=>this.props.handlenomcapture(e)}>{data.map(MakeItem)}</Form.Select>;
 
     }
 
