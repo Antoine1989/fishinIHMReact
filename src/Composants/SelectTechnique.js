@@ -1,12 +1,13 @@
 
-import React, { Component } from 'react';
+import React, { Component,useState } from 'react';
 import Form from 'react-bootstrap/Form';
+import './ListCaptures.css';
 
-export default class SelectTechnique extends Component {
 
-    render() {
+function SelectTechnique (props){
+    var [change,setStateEnfant] =useState('');
 
-        var Data     = ["Arbalète : Chasse à trou",
+        const Data     = ["Arbalète : Chasse à trou",
             "Arbalète : Chasse à l' indienne",
             "Arbalète : Chasse à la coulée",
             "Arbalète : Chasse à l’agachon",
@@ -33,8 +34,7 @@ export default class SelectTechnique extends Component {
             };
 
 
-        return  <Form.Select aria-label="Default select example">{Data.map(MakeItem)}</Form.Select>;
+        return  <Form.Select aria-label="Default select example" onChange={setStateEnfant=(change)=>props.handletechnique(change)}>{Data.map(MakeItem)}</Form.Select>;
 
-    }
-
-};
+    };
+    export default SelectTechnique

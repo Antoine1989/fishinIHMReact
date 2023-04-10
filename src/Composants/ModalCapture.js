@@ -32,7 +32,7 @@ function ModalCapture(props) {
   const[quantite,setQuantite]=useState('');
   const[poids,setPoids]=useState('');
   const[longueur,setLongueur]=useState('');
-  const[datepeche,setDatepeche]=useState();
+  const[date_peche,setDatepeche]=useState();
   const[maree,setMaree]=useState('');
   const[coef,setCoef]=useState('');
   const[commentaires,setCommentaires]=useState('');
@@ -116,7 +116,7 @@ const {getSpots}=props;
   const addCapture=(e)=>{
     e.preventDefault();
     const type=getCategory();
-    const capturedata={type:type,nomCapture:nomCapture, technique:technique,quantite:quantite,poids:poids,longueur:longueur,date:datepeche,maree:maree,coef:coef,commentaires:commentaires,photo:photo}
+    const capturedata={type:type,nomCapture:nomCapture, technique:technique,quantite:quantite,poids:poids,longueur:longueur,date_peche:date_peche,maree:maree,coef:coef,commentaires:commentaires,photo:photo}
     FishinService.postCapture(spot,capturedata).then((result)=>{
      setMessage(result.data)
       console.log(result.data);
@@ -221,11 +221,11 @@ const {getSpots}=props;
           <Modal.Title>AJOUT D'UN NOUVEAU {getCategory()}</Modal.Title>
         </Modal.Header>
         <Form.Label style={{textAlign: "center"}}>Type</Form.Label>
-        <Form.Control name="type" defaultValue={getCategory()} /*onChange={(e)=>handletype(e)}*/ disabled/>
+        <Form.Control name="type" defaultValue={getCategory()}  disabled/>
         <Form.Label style={{textAlign: "center"}}>Nom</Form.Label>
        {getSelect()}
         <Form.Label style={{textAlign: "center"}}>Technique de pêche</Form.Label>
-        <SelectTechnique name="technique" onChange={(e)=>handletechnique(e)}/>
+        <SelectTechnique name="technique" handletechnique={handletechnique}/>
         <Form.Label style={{textAlign: "center"}}>Quantité</Form.Label>
         <Form.Control name="quantite" onChange={(e)=>handlequantite(e)}/>
         <Form.Label style={{textAlign: "center"}}>Poids (kg)</Form.Label>
@@ -233,7 +233,7 @@ const {getSpots}=props;
         <Form.Label style={{textAlign: "center"}}>Longueur (cm)</Form.Label>
         <Form.Control name="longueur" onChange={(e)=>handlelongueur(e)}/>
         <Form.Label style={{textAlign: "center"}}>Date de la pêche </Form.Label>
-        <DatePicker  className="form-control"  name="date" selected={datepeche}
+        <DatePicker  className="form-control"  name="date" selected={date_peche}
         minDate={today} onChange={date=>setDatepeche(date)/*(e)=>handledatepeche(e)*/} dateFormat="dd-MM-yyyy"/>
          <Form.Label style={{textAlign: "center"}}>Marée</Form.Label>
          <SelectMaree name="maree" onChange={(e)=>handlemaree(e)}/>

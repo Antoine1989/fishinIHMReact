@@ -54,7 +54,7 @@ import './ListCaptures.css';
                 
             };
            
-             change=(e)=>props.handlenomcapture(e);
+            // change=(e)=>props.handlenomcapture(e);
              
   
 
