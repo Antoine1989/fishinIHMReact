@@ -21,6 +21,12 @@ import SelectMaree from './SelectMaree';
 import '../ComposantsIcons/ComposantsIcons.css';
 import FishinService from '../Service/FishinService';
 import ListCaptures from './ListCaptures';
+import {GiCanoe} from "react-icons/gi";
+import {GiBoatFishing} from "react-icons/gi";
+import {GiFishingPole} from "react-icons/gi";
+import { Row,Container,Col } from 'react-bootstrap';
+import SelectEmbarcation from './SelectEmbarcation';
+
 
 
 function ModalCapture(props) {
@@ -37,6 +43,8 @@ function ModalCapture(props) {
   const[coef,setCoef]=useState('');
   const[commentaires,setCommentaires]=useState('');
   const[photo,setPhoto]=useState('');
+  const[embarcation,setEmbarcation]=useState('');
+
 
  
 
@@ -107,6 +115,11 @@ const {spot}= props;
     const photo=event.target.value;
     setPhoto(photo);
   }
+
+  const handleembarcation=(event)=>{
+    const embarcation=event.target.value;
+    setPhoto(embarcation);
+  }
   
 const {getSpots}=props;
 
@@ -116,7 +129,7 @@ const {getSpots}=props;
   const addCapture=(e)=>{
     e.preventDefault();
     const type=getCategory();
-    const capturedata={type:type,nomCapture:nomCapture, technique:technique,quantite:quantite,poids:poids,longueur:longueur,date_peche:date_peche,maree:maree,coef:coef,commentaires:commentaires,photo:photo}
+    const capturedata={type:type,nomCapture:nomCapture, technique:technique,quantite:quantite,poids:poids,longueur:longueur,date_peche:date_peche,maree:maree,coef:coef,commentaires:commentaires,photo:photo,embarcation:embarcation}
     FishinService.postCapture(spot,capturedata).then((result)=>{
      setMessage(result.data)
       console.log(result.data);
@@ -216,8 +229,6 @@ const {getSpots}=props;
     </Tooltip>
   );
 
-  
-
   return (
     <>
       
@@ -256,13 +267,20 @@ const {getSpots}=props;
          <Form.Control name="coef" onChange={(e)=>handlecoef(e)}/>
          <Form.Label style={{textAlign: "center"}}>Commentaires</Form.Label>
         <Form.Control name="commentaires" onChange={(e)=>handlecommentaires(e)}/>
+        <Form.Label style={{textAlign: "center"}}>Embarcation</Form.Label>
+       {/* <Container fluid="md">
+           <Row>
+              <Col><GiFishingPole/><Form.Check aria-label="option 1" /><GiCanoe/><Form.Check aria-label="option 1" /><GiBoatFishing/><Form.Check aria-label="option 1"/></Col>
+           </Row>
+  </Container>*/}
+        <SelectEmbarcation/>
         <Form.Label style={{textAlign: "center"}}>Photo</Form.Label>
         <Form.Control name="photo" onChange={(e)=>handlephoto(e)}/>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Fermer
           </Button>
-          <Button className="bg-gris" type='submit' onClick={addCapture}>
+          <Button className="bg-gris" type='submit' onClick={addCapture} disabled={!nomCapture||!poids||!longueur||!date_peche}>
             Ajouter
           </Button>
         </Modal.Footer>

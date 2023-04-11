@@ -25,7 +25,7 @@ function ModalDelete(props) {
     return (
       <>
                
-        <Button  className="square bg-gris rounded-9 ms-3 me-3"  onClick={handleShow}><TbAnchorOff className="margin"/></Button>
+        <Button  className="square deleteModale rounded-9 ms-3 me-3"  onClick={handleShow}><TbAnchorOff className="margin"/></Button>
     
         <Modal show={show} onHide={handleClose} animation={false}>
           <Modal.Header closeButton>

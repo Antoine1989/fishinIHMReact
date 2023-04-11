@@ -7,7 +7,7 @@ import './ListCaptures.css';
 function SelectTechnique (props){
     var [change,setStateEnfant] =useState('');
 
-        const Data     = ["Arbalète : Chasse à trou",
+        const Data     = ["","Arbalète : Chasse à trou",
             "Arbalète : Chasse à l' indienne",
             "Arbalète : Chasse à la coulée",
             "Arbalète : Chasse à l’agachon",

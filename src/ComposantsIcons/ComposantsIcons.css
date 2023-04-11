@@ -10,3 +10,12 @@
 .margin{
     margin-right: 2px;
 }
+
+.deleteModale{
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color:bisque;
+}
+.deleteModale:hover{
+    color:rgb(189, 11, 11);
+}
