@@ -29,7 +29,7 @@ function ModalDelete(props) {
     
         <Modal show={show} onHide={handleClose} animation={false}>
           <Modal.Header closeButton>
-            <Modal.Title>Suppression</Modal.Title>
+            <Modal.Title>Suppression du spot</Modal.Title>
           </Modal.Header>
        <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>

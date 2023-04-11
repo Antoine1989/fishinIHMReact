@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { TbAnchorOff } from "react-icons/tb";
+import { GiSpearfishing } from "react-icons/gi";
 import FishinService from '../Service/FishinService';
 import '../ComposantsIcons/ComposantsIcons.css';
 
@@ -33,7 +34,7 @@ function ModalDeleteCapture(props) {
     return (
       <>
                
-        <Button  className="square deleteModale rounded-9 ms-3 me-3"  onClick={handleShow}><TbAnchorOff/></Button>
+        <Button  className="square deleteModale rounded-9 ms-3 me-3"  onClick={handleShow}><GiSpearfishing/></Button>
     
         <Modal show={show} onHide={handleClose} animation={false}>
           <Modal.Header closeButton>

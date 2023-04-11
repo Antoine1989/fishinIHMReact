@@ -205,7 +205,7 @@ const {getSpots}=props;
 
   }
 
-  function reInit(nomCapture,technique,quantite,poids,longueur,date_peche,maree,coef,commentaires,photo){
+  const reInit=(nomCapture,technique,quantite,poids,longueur,date_peche,maree,coef,commentaires,photo,embarcation)=>{
     nomCapture=setNomcapture(null);
     technique=setTechnique(null);
     quantite=setQuantite(null);
@@ -216,7 +216,7 @@ const {getSpots}=props;
     coef=setCoef(null);
     commentaires=setCommentaires(null);
     photo=setPhoto(null);
-
+    embarcation=setEmbarcation(null);
   }
 
   const [show, setShow] = useState(false);
