@@ -122,6 +122,7 @@ const {getSpots}=props;
       console.log(result.data);
       handleClose();
       getCaptures();
+      reInit(nomCapture,technique,quantite,poids,longueur,date_peche,maree,coef,commentaires,photo);
   });
   }
   const today = new Date().getDate;
@@ -188,6 +189,20 @@ const {getSpots}=props;
     else if (capture==="CEPHALOPODE")
     return <SelectCephalopode name="nom_capture" handlenomcapture={handlenomcapture} defaultValue=''/>
     else return ''
+
+  }
+
+  function reInit(nomCapture,technique,quantite,poids,longueur,date_peche,maree,coef,commentaires,photo){
+    nomCapture=setNomcapture(null);
+    technique=setTechnique(null);
+    quantite=setQuantite(null);
+    poids=setPoids(null);
+    longueur=setLongueur(null);
+    date_peche=setDatepeche(null);
+    maree=setMaree(null);
+    coef=setCoef(null);
+    commentaires=setCommentaires(null);
+    photo=setPhoto(null);
 
   }
 

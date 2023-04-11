@@ -5,7 +5,7 @@ export default class SelectCephalopode extends Component {
 
     render() {
 
-        var Data     = ['Calmar',
+        var Data     = ['','Calmar',
             'Seiche',
             'Poulpe',
             

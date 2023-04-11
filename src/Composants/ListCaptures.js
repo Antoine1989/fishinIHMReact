@@ -103,7 +103,7 @@ function ListCaptures(props) {
         <div key={capture.id} >
         <Container className='p-4 captures'>                             
                   <Row><span hidden="hidden"> {capture.type}: </span>
-                   <span className="margin"> {capture.nomCapture}  </span><span className="margin"> {capture.date_peche} </span>
+                   <span className="margin"> {capture.nomCapture} {" "+capture.poids+" kg"} {" "+capture.longueur+" cm"} </span><span className="margin"> {capture.technique} </span><span className="margin"> {capture.date_peche} </span>
              {/* {capture.type==="POISSON"? <FaFish className="margin"/>:
               (capture.type==="CRUSTACE"&&(capture.nomCapture!==("Homard"||"Langouste"||"Bouquet"||"Crevettes"))?<GiCrab className="margin"/>:
               (capture.type==="CRUSTACE"&&(capture.nomCapture===("Homard"||"Langouste"||"Bouquet"||"Crevettes"))?<GiShrimp className="margin"/>:
