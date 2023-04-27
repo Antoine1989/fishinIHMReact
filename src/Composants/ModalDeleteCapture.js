@@ -34,7 +34,7 @@ function ModalDeleteCapture(props) {
     return (
       <>
                
-        <Button  className="square deleteModale rounded-9 ms-3 me-3"  onClick={handleShow}><GiSpearfishing/></Button>
+        <Button  className="square deleteModale rounded-9 ms-3 me-3"  onClick={handleShow}><GiSpearfishing size={20}/></Button>
     
         <Modal show={show} onHide={handleClose} animation={false}>
           <Modal.Header closeButton>

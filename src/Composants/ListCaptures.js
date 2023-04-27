@@ -13,6 +13,9 @@ import '../ComposantsIcons/ComposantsIcons.css';
 import ModalDeleteCapture from './ModalDeleteCapture';
 import ModalCapture from './ModalCapture';
 import { icon } from '@fortawesome/fontawesome-svg-core';
+import {GiCanoe} from "react-icons/gi";
+import {GiBoatFishing} from "react-icons/gi";
+import {GiFishingPole} from "react-icons/gi";
 function ListCaptures(props) {
 
     const [captures, setCaptures]=useState([])
@@ -75,6 +78,22 @@ function ListCaptures(props) {
         return <GiShrimp className="margin"/>
         
     }
+}
+
+    function embarcationToEmbarcationIcon(embarcation){
+
+        if(embarcation==="Aucune"){
+            return<GiFishingPole size={28} className="margin"/>
+        }
+        else if(embarcation==="Canoë"){
+            return  <GiCanoe size={28} className="margin"/>
+        }
+        else if (embarcation==="Bateau"){
+       
+            return <GiBoatFishing size={28} className="margin"/>
+            
+        }
+    }
   /*  else if (type==="CRUSTACE"&& name==="Langouste"){
         return <GiShrimp className="margin"/>
     }
@@ -85,8 +104,6 @@ function ListCaptures(props) {
         return <GiShrimp className="margin"/>
     }*/
     
-    else return <GiCrab className="margin"/>;
-   }
    const captureFish="POISSON";
    const captureCrab="CRAB";
    const capturePalin="PALIN";
@@ -101,15 +118,25 @@ function ListCaptures(props) {
     { captures.map(
         capture=>
         <div key={capture.id} >
-        <Container className='p-4 captures'>                             
-                  <Row><span hidden="hidden"> {capture.type}: </span>
-                   <span className="margin"> {capture.nomCapture} {" "+capture.poids+" kg"} {" "+capture.longueur+" cm"} </span><span className="margin"> {capture.technique} </span><span className="margin"> {capture.date_peche} </span>
+        <Container className='p-4 captures'>  
+       
+        <Row>
+             <Col>{nameToAnimalIcon(capture.type)}</Col> 
+             <Col> {embarcationToEmbarcationIcon(capture.embarcation)}</Col>  
+             <Col><ModalDeleteCapture capture={capture.id} getCaptures={getCaptures}/></Col>
+        </Row>                         
+         <Row><Col><span hidden="hidden"> {capture.type}: </span></Col></Row>
+                  <Row>
+                  <Col><span className="margin"> {capture.nomCapture}</span></Col>
+                  <Col><span className="margin">{" "+capture.poids+" kg"} {" "+capture.longueur+" cm"}</span> </Col></Row>
+                  <Row><Col> <span className="margin"> {capture.date_peche} </span></Col>
+                  <Col><span className="margin"> {capture.technique} </span></Col>
              {/* {capture.type==="POISSON"? <FaFish className="margin"/>:
               (capture.type==="CRUSTACE"&&(capture.nomCapture!==("Homard"||"Langouste"||"Bouquet"||"Crevettes"))?<GiCrab className="margin"/>:
               (capture.type==="CRUSTACE"&&(capture.nomCapture===("Homard"||"Langouste"||"Bouquet"||"Crevettes"))?<GiShrimp className="margin"/>:
     <GiSquid className="margin"/>))}  */}
-                {nameToAnimalIcon(capture.type)}
-              <ModalDeleteCapture capture={capture.id} getCaptures={getCaptures}/> </Row>             
+                
+               </Row>             
         </Container>
        
         </div>
