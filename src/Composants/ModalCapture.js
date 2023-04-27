@@ -43,9 +43,37 @@ function ModalCapture(props) {
   const[coef,setCoef]=useState('');
   const[commentaires,setCommentaires]=useState('');
   const[photo,setPhoto]=useState('');
-  const[embarcation,setEmbarcation]=useState('');
+ // const[embarcation,setEmbarcation]=useState('');
+
+  const [embarcation, setEmbarcation] = useState({ chosenValue:"",Another:""}); //,Another:""
+  const { chosenValue } = embarcation ?? {}; //Pour éviter l'erreur Cannot destructure property 'chosenValue' of 'embarcation' as it is null.
+  
+/*
+const embarcation = ({ chosenValue }) => {
+  const user = chosenValue && embarcation.chosenValue;
+  ...
+}
+*/ 
+  
+  const handleEmbarcation = e => {
+      e.persist();
+      console.log(e.target.value);
+      const split =embarcation.split;
+      console.log("split :", split)
+    console.log("embarcation.chosenValue :", embarcation.chosenValue)
+      setEmbarcation(prevState => ({
+        ...prevState,
+        chosenValue: e.target.value
 
 
+        /*
+        import com.fasterxml.jackson.databind.ObjectMapper;
+
+        ObjectMapper mapper = new ObjectMapper();
+        MyObject obj = mapper.readValue(jsonString, SelectEmbarcation.class);
+       */
+      }));
+    };
  
 
   const [data, setData] = useState('');
@@ -129,13 +157,14 @@ const {getSpots}=props;
   const addCapture=(e)=>{
     e.preventDefault();
     const type=getCategory();
-    const capturedata={type:type,nomCapture:nomCapture, technique:technique,quantite:quantite,poids:poids,longueur:longueur,date_peche:date_peche,maree:maree,coef:coef,commentaires:commentaires,photo:photo,embarcation:embarcation}
+    console.log("chosenValue : ", embarcation.chosenValue)
+    const capturedata={type:type,nomCapture:nomCapture, technique:technique,quantite:quantite,poids:poids,longueur:longueur,embarcation:embarcation.chosenValue,date_peche:date_peche,maree:maree,coef:coef,commentaires:commentaires,photo:photo}
     FishinService.postCapture(spot,capturedata).then((result)=>{
      setMessage(result.data)
       console.log(result.data);
       handleClose();
       getCaptures();
-      reInit(nomCapture,technique,quantite,poids,longueur,date_peche,maree,coef,commentaires,photo);
+      reInit(nomCapture,technique,quantite,poids,longueur,date_peche,maree,coef,commentaires,photo,embarcation);
   });
   }
   const today = new Date().getDate;
@@ -273,7 +302,7 @@ const {getSpots}=props;
               <Col><GiFishingPole/><Form.Check aria-label="option 1" /><GiCanoe/><Form.Check aria-label="option 1" /><GiBoatFishing/><Form.Check aria-label="option 1"/></Col>
            </Row>
   </Container>*/}
-        <SelectEmbarcation/>
+        <SelectEmbarcation handleEmbarcation={handleEmbarcation} chosenValue={chosenValue}/>
         <Form.Label style={{textAlign: "center"}}>Photo</Form.Label>
         <Form.Control name="photo" onChange={(e)=>handlephoto(e)}/>
         <Modal.Footer>

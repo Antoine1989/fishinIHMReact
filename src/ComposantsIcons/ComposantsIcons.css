@@ -19,3 +19,6 @@
 .deleteModale:hover{
     color:rgb(189, 11, 11);
 }
+.formcheck:hover{
+    color:rgba(7, 231, 157, 0.842) !important;
+}

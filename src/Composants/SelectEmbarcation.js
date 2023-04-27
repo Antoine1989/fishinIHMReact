@@ -5,27 +5,32 @@ import { Row,Container,Col } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import '../ComposantsIcons/ComposantsIcons.css';
+import React, { Component, useState } from 'react';
 
   function SelectEmbarcation (props){
 
+//// Test state checkbox
+    /*const [embarcation, setEmbarcation] = useState({ chosenValue: "", another: "another" });
+    const { chosenValue } = embarcation;
 
-    function embarcationIcon(){
-        if (props.embarcation==="Aucune"){
-            return <GiFishingPole/>
-        }
-        else if (props.embarcation==="Canoe"){
-            return <GiCanoe/>
-        }
-        else return <GiBoatFishing/>
-
-    }
-
-  {/* return  <Container fluid="md">
-           <Row>
-              <Col>{embarcationIcon()}</Col>
-              <Col> <Form.Check aria-label="option 1" /></Col>
-           </Row>
-</Container>*/}
+    
+    const handleEmbarcation = e => {
+        e.persist();
+        console.log(e.target.value);
+    
+        setEmbarcation(prevState => ({
+          ...prevState,
+          chosenValue: e.target.value
+        }));
+      };
+    
+      const handleSubmit = e => {
+        e.preventDefault();
+        alert(`${chosenValue}`);
+      };*/
+    
+///////////
 
 function msgIcon(typeEmbarcation){
    
@@ -59,17 +64,22 @@ const boat="Bateau";
 
 
 
-return <Form className="text-center">{
+return <Form className="text-center" /*onSubmit={handleSubmit}*/>{
     <div  className="mb-3">
+    <Form.Group controlId="chosenValue">
     <OverlayTrigger
       placement="top"
       delay={{ show: 250, hide: 400 }}
       overlay={renderTooltip(none)}>
      <Form.Check
         inline
+       className="formcheck"
         //disabled
+        value="Aucune"
         label={<GiFishingPole size={28}/>}
-        name="group1"      
+        name="group1"     
+        onChange={props.handleEmbarcation} 
+        checked={props.chosenValue === "Aucune"}
       />
       </OverlayTrigger>
 
@@ -79,8 +89,12 @@ return <Form className="text-center">{
       overlay={renderTooltip(canoe)}>
       <Form.Check
         inline
+        className="formcheck"
+        value="Canoë"
         label={<GiCanoe size={28}/>}
         name="group1"
+        onChange={props.handleEmbarcation}
+        checked={props.chosenValue === "Canoë"}
         />
       </OverlayTrigger>
 
@@ -90,10 +104,14 @@ return <Form className="text-center">{
       overlay={renderTooltip(boat)}>
       <Form.Check
         inline
-        label={<GiBoatFishing size={28}/>}            
+        className="formcheck"
+        value="Bateau"
+        label={<GiBoatFishing size={28}/>}  
+        onChange={props.handleEmbarcation} 
+        checked={props.chosenValue === "Bateau"}         
       />
       </OverlayTrigger>
-       
+      </Form.Group>  
     </div>
    
   }
