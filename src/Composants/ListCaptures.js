@@ -78,6 +78,7 @@ function ListCaptures(props) {
         return <GiShrimp className="margin"/>
         
     }
+    else return <GiCrab className="margin"/>
 }
 
     function embarcationToEmbarcationIcon(embarcation){
