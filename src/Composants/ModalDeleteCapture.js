@@ -10,10 +10,7 @@ import '../ComposantsIcons/ComposantsIcons.css';
 function ModalDeleteCapture(props) {
     const [show, setShow] = useState(false);
 
-    /*useEffect(()=>{
-        getSpots()    
-       deleteSpot()
-    }, [])*/
+  
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -23,18 +20,18 @@ function ModalDeleteCapture(props) {
     const deleteCapture=()=>{  
         const {getCaptures}=props;
         FishinService.deleteCapture(capture).then((response)=>{
-            //setSpots(spots.filter(spot =>{return spot.id !== id;}))
+           
             console.log(response.data)
             
             getCaptures();
-  
+            handleClose();
         });
     }
   
     return (
       <>
                
-        <Button  className="square deleteModale rounded-9 ms-3 me-3"  onClick={handleShow}><GiSpearfishing size={20}/></Button>
+        <Button  className="square deleteModale rounded-9 ms-3 me-3 "  onClick={handleShow}><GiSpearfishing size={20} className="iconDelete"/></Button>
     
         <Modal show={show} onHide={handleClose} animation={false}>
           <Modal.Header closeButton>
@@ -46,7 +43,7 @@ function ModalDeleteCapture(props) {
             <Button variant="secondary" onClick={handleClose}>
               Annuler
             </Button>
-            <Button className="bg-gris" onClick={deleteCapture}>
+            <Button className="bg-gris" onClick={deleteCapture} >
              Oui
             </Button>
           </Modal.Footer>

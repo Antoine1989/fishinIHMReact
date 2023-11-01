@@ -54,8 +54,6 @@ import './ListCaptures.css';
                 
             };
            
-            // change=(e)=>props.handlenomcapture(e);
-             
   
 
         return  <Form.Select aria-label="Default select example"  onChange={setStateEnfant=(change)=>props.handlenomcapture(change)}>{data.map(MakeItem)}</Form.Select> ;

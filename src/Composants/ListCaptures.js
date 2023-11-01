@@ -12,7 +12,7 @@ import { GiShrimp} from "react-icons/gi";
 import '../ComposantsIcons/ComposantsIcons.css';
 import ModalDeleteCapture from './ModalDeleteCapture';
 import ModalCapture from './ModalCapture';
-import { icon } from '@fortawesome/fontawesome-svg-core';
+import CaptureDetail from './CaptureDetail';
 import {GiCanoe} from "react-icons/gi";
 import {GiBoatFishing} from "react-icons/gi";
 import {GiFishingPole} from "react-icons/gi";
@@ -20,6 +20,12 @@ function ListCaptures(props) {
 
     const [captures, setCaptures]=useState([])
     const [spots, setSpots]=useState([])
+
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    //const handleShow = () => setShow(true);
 
     useEffect(()=>{
         getCaptures()
@@ -104,6 +110,10 @@ function ListCaptures(props) {
     else if (type==="CRUSTACE"&& name==="Crevettes"){
         return <GiShrimp className="margin"/>
     }*/
+    const showDetails=(nom,date,quantite,poids,longueur,spot,technique,embarcation,maree,coef,commentaires,photo)=>{
+        return <CaptureDetail show={show} nom={nom} date={date} quantite={quantite} poids={poids} longueur={longueur}
+                            spot={spot} technique={technique} embarcation={embarcation} maree={maree} coef={coef} commentaires={commentaires} photo={photo}/>
+    }
     
    const captureFish="POISSON";
    const captureCrab="CRAB";
@@ -117,27 +127,30 @@ function ListCaptures(props) {
     <ModalCapture spot={spot} capture={capturePalin}  getSpots={getSpots} getCaptures={getCaptures}/>
     <ModalCapture spot={spot} capture={captureCephalopode} getSpots={getSpots} getCaptures={getCaptures}/>
     { captures.map(
-        capture=>
-        <div key={capture.id} >
-        <Container className='p-4 captures'>  
-       
-        <Row>
-             <Col>{nameToAnimalIcon(capture.type)}</Col> 
+        (capture,id)=>
+        <div key={id}   >
+{/* <CaptureDetail show={show} key={capture.id} handleClose={handleClose} nom={capture.nomCapture} date={capture.date_peche} quantite={capture.quantite} poids={capture.poid} longueur={capture.longueur}
+                             technique={capture.technique} embarcation={capture.embarcation} maree={capture.maree} coef={capture.coef} commentaires={capture.commentaires} photo={capture.photo}/>*/ }
+        
+        <Container className='p-4 captures' >         
+        <Row >
+             <Col onClick={() => setShow(true)}>{nameToAnimalIcon(capture.type)} </Col> 
              <Col> {embarcationToEmbarcationIcon(capture.embarcation)}</Col>  
              <Col><ModalDeleteCapture capture={capture.id} getCaptures={getCaptures}/></Col>
         </Row>                         
-         <Row><Col><span hidden="hidden"> {capture.type}: </span></Col></Row>
-                  <Row>
-                  <Col><span className="margin"> {capture.nomCapture}</span></Col>
-                  <Col><span className="margin">{" "+capture.poids+" kg"} {" "+capture.longueur+" cm"}</span> </Col></Row>
-                  <Row><Col> <span className="margin"> {capture.date_peche} </span></Col>
-                  <Col><span className="margin"> {capture.technique} </span></Col>
-             {/* {capture.type==="POISSON"? <FaFish className="margin"/>:
-              (capture.type==="CRUSTACE"&&(capture.nomCapture!==("Homard"||"Langouste"||"Bouquet"||"Crevettes"))?<GiCrab className="margin"/>:
-              (capture.type==="CRUSTACE"&&(capture.nomCapture===("Homard"||"Langouste"||"Bouquet"||"Crevettes"))?<GiShrimp className="margin"/>:
-    <GiSquid className="margin"/>))}  */}
-                
-               </Row>             
+         <Row>
+             <Col><span hidden="hidden"> {capture.type}: </span></Col>
+        </Row>
+        <Row>
+            <Col><span className="margin"> {capture.nomCapture}</span></Col>
+            <Col><span className="margin">{" "+capture.poids+" kg"} {" "+capture.longueur+" cm"}</span> </Col></Row>
+        <Row>
+            <Col> <span className="margin"> {capture.date_peche} </span></Col>
+            <Col><span className="margin"> {capture.technique} </span></Col>               
+        </Row> 
+
+        <CaptureDetail show={show} capture={capture.id} handleClose={handleClose} nom={capture.nomCapture} date={capture.date_peche} quantite={capture.quantite} poids={capture.poids} longueur={capture.longueur}
+                             technique={capture.technique} embarcation={capture.embarcation} maree={capture.maree} coef={capture.coef} commentaires={capture.commentaires} photo={capture.photo} spot={spot}/>
         </Container>
        
         </div>

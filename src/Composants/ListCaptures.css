@@ -6,6 +6,29 @@
     margin-top: 5px;
     
   }
+
+  .captures:hover{
+   
+      border-left: 4px solid rgb(7, 231, 156) ;
+      border-radius: 2px;
+      border-width: 3px;
+      cursor: pointer;
+      margin-top: 5px;
+    
+  }
+
   .key{
     display: none;
+  }
+
+  .iconDelete {
+    transition: transform .7s ease-in-out;
+  }
+
+  .iconDelete:hover {
+    transform: rotate(360deg);
+  }
+
+  .thead{
+    background-color: rgb(114, 185, 160) !important;
   }

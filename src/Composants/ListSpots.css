@@ -24,3 +24,11 @@
   .accordion-button:not(.collapsed) {
     color: #212529;
   }
+
+  .iconDelete {
+    transition: transform .7s ease-in-out;
+  }
+
+  .iconDelete:hover {
+    transform: rotate(360deg);
+  }
