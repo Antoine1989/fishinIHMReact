@@ -27,12 +27,12 @@ function CaptureDetail(props) {
                      
          
   {/*<div  key={props.key}>*/}
-    <Modal show={props.show} /*capture={props.capture}*/ onHide={props.handleClose} animation={false} >  
+    <Modal show={props.show} /*capture={props.capture}*/ onHide={props.handleClose} animation={false} capture={props.capture} >  
     
     <Modal.Header closeButton>
             <Modal.Title>Détails de la capture</Modal.Title>
      </Modal.Header>   
-    <Table striped bordered hover>
+    <Table striped bordered hover key={props.capture}>
           <thead className="thead">
             <tr>
               <th>Nom</th>
@@ -80,7 +80,7 @@ function CaptureDetail(props) {
           <tbody>
             <tr>
               <td className="text-center">{props.commentaires?props.commentaires:"N/A"}</td>
-              <td>{props.photo?props.photo:"N/A"}</td>
+              <td>{props.capture?props.capture:"N/A"}</td>
             </tr>
          </tbody>
          </Table>

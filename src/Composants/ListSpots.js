@@ -56,7 +56,7 @@ function ListSpots() {
   return (
     <div >
     <Container className='p-4 '>
-        <Row>
+        <Row className="justify-content-md-center">
             <Col md={{ span: 4, offset: 4 }}>
             <ModalSpot getSpots={getSpots}/>       
             </Col>   
@@ -67,6 +67,7 @@ function ListSpots() {
         spot=>
         <div key={spot.id}>
         <Container className='p-4 '>
+        <Row className="justify-content-md-center">
         <Col md="4">      
             <ListGroup variant="flush">
                 <ListGroup.Item>            
@@ -84,6 +85,7 @@ function ListSpots() {
                 </ListGroup.Item>
             </ListGroup>          
         </Col>
+        </Row>
         </Container>
         </div>
     )}

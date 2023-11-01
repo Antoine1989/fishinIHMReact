@@ -110,10 +110,10 @@ function ListCaptures(props) {
     else if (type==="CRUSTACE"&& name==="Crevettes"){
         return <GiShrimp className="margin"/>
     }*/
-    const showDetails=(nom,date,quantite,poids,longueur,spot,technique,embarcation,maree,coef,commentaires,photo)=>{
+    /*const showDetails=(nom,date,quantite,poids,longueur,spot,technique,embarcation,maree,coef,commentaires,photo)=>{
         return <CaptureDetail show={show} nom={nom} date={date} quantite={quantite} poids={poids} longueur={longueur}
                             spot={spot} technique={technique} embarcation={embarcation} maree={maree} coef={coef} commentaires={commentaires} photo={photo}/>
-    }
+    }*/
     
    const captureFish="POISSON";
    const captureCrab="CRAB";
@@ -127,8 +127,8 @@ function ListCaptures(props) {
     <ModalCapture spot={spot} capture={capturePalin}  getSpots={getSpots} getCaptures={getCaptures}/>
     <ModalCapture spot={spot} capture={captureCephalopode} getSpots={getSpots} getCaptures={getCaptures}/>
     { captures.map(
-        (capture,id)=>
-        <div key={id}   >
+        (capture)=>
+        <div key={capture.id}    >
 {/* <CaptureDetail show={show} key={capture.id} handleClose={handleClose} nom={capture.nomCapture} date={capture.date_peche} quantite={capture.quantite} poids={capture.poid} longueur={capture.longueur}
                              technique={capture.technique} embarcation={capture.embarcation} maree={capture.maree} coef={capture.coef} commentaires={capture.commentaires} photo={capture.photo}/>*/ }
         
@@ -149,7 +149,7 @@ function ListCaptures(props) {
             <Col><span className="margin"> {capture.technique} </span></Col>               
         </Row> 
 
-        <CaptureDetail show={show} capture={capture.id} handleClose={handleClose} nom={capture.nomCapture} date={capture.date_peche} quantite={capture.quantite} poids={capture.poids} longueur={capture.longueur}
+        <CaptureDetail show={show}   /*id={captures.id}*/key={capture.id} capture={capture.id} handleClose={handleClose} nom={capture.nomCapture} date={capture.date_peche} quantite={capture.quantite} poids={capture.poids} longueur={capture.longueur}
                              technique={capture.technique} embarcation={capture.embarcation} maree={capture.maree} coef={capture.coef} commentaires={capture.commentaires} photo={capture.photo} spot={spot}/>
         </Container>
        
