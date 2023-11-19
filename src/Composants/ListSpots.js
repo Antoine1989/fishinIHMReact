@@ -17,6 +17,7 @@ import AnchorIcon from '../ComposantsIcons/AnchorIcon';
 import '../ComposantsIcons/ComposantsIcons.css';
 import './ModalCapture';
 import ModalCapture from './ModalCapture';
+import BubbleBackground from './BubbleBackground';
 
 function ListSpots() {
 
@@ -54,19 +55,30 @@ function ListSpots() {
     const[message,setMessage]=useState('');
 
   return (
+   
     <div >
-    <Container className='p-4 '>
+      
+     
+        
+  
+   <Container className='p-4 "justify-content-md-center"'>
         <Row className="justify-content-md-center">
             <Col md={{ span: 4, offset: 4 }}>
             <ModalSpot getSpots={getSpots}/>       
             </Col>   
          </Row>
     </Container>
-    
+    <Row className="justify-content-md-center">
+     <BubbleBackground /> 
+     
     { spots.map(
         spot=>
         <div key={spot.id}>
         <Container className='p-4 '>
+        <Row className="justify-content-md-center">
+        <Col md="4">  
+        </Col>
+        </Row>
         <Row className="justify-content-md-center">
         <Col md="4">      
             <ListGroup variant="flush">
@@ -89,7 +101,8 @@ function ListSpots() {
         </Container>
         </div>
     )}
-
+    </Row>
+    
     </div>
     
     
