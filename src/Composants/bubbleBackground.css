@@ -5,7 +5,7 @@
   .wrapper {
     height: 100%;
     width: 100%;
-    background: linear-gradient(180deg, #7cf3f5, 5%, #55b1f3, 50%, #5f629e);
+    /*background: linear-gradient(180deg, #f8f8f8, 5%, rgb(198, 228, 217), 50%, rgb(114, 185, 160))*/;
     position: absolute;
   }
   .wrapper h1 {
@@ -24,7 +24,8 @@
   .wrapper div {
     height: 60px;
     width: 60px;
-    border: 2px solid rgba(255, 255, 255, 0.7);
+    /*border: 2px solid rgba(255, 255, 255, 0.7)*/;
+    border: 2px solid rgb(114, 185, 160);
     border-radius: 50px;
     position: absolute;
     top: 10%;
@@ -35,7 +36,8 @@
     height: 10px;
     width: 10px;
     border-radius: 50px;
-    background: rgba(255, 255, 255, 0.5);
+    /*background: rgba(255, 255, 255, 0.5)*/;
+    background:rgb(218, 236, 230);
     position: absolute;
     top: 20%;
     right: 20%;

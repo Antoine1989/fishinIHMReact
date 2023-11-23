@@ -11,11 +11,11 @@
   }
 
   .accordion-button {
-    background-color: rgba(149, 174, 179, 0.856);
+    background-color: rgb(114, 185, 160);
     border-radius: 10px;
   }
   .accordion-button:hover {
-    background-color: rgb(114, 185, 160) !important;
+    background-color: rgb(8, 172, 117) !important;
     color: aliceblue;
   }
   .accordion-button:focus {
@@ -31,4 +31,10 @@
 
   .iconDelete:hover {
     transform: rotate(360deg);
+  }
+  .list-group-item{
+    background: transparent !important;
+  }
+  .accordion-header{
+    background: transparent !important;
   }

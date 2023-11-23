@@ -57,20 +57,17 @@ function ListSpots() {
   return (
    
     <div >
-      
-     
-        
-  
+   
    <Container className='p-4 "justify-content-md-center"'>
         <Row className="justify-content-md-center">
             <Col md={{ span: 4, offset: 4 }}>
             <ModalSpot getSpots={getSpots}/>       
             </Col>   
          </Row>
-    </Container>
-    <Row className="justify-content-md-center">
-     <BubbleBackground /> 
-     
+  </Container>
+         
+    <Row className="justify-content-md-center">        
+     <BubbleBackground getSpots={getSpots}/> 
     { spots.map(
         spot=>
         <div key={spot.id}>
@@ -83,7 +80,7 @@ function ListSpots() {
         <Col md="4">      
             <ListGroup variant="flush">
                 <ListGroup.Item>            
-                <Card className="border-white ">
+                <Card className="border-transparent">
                 <Accordion >
                 <Accordion.Header >{spot.nomSpot}<Container className='ml-4 '> <FontAwesomeIcon icon={faAnchor} />
                <ModalDelete spot={spot.id} getSpots={getSpots}/>

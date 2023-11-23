@@ -1,11 +1,11 @@
 .bg-gris{
-    background-color: rgba(149, 174, 179, 0.856);
-    border-color: white;
+    background-color: rgba(149, 174, 179, 0.856) !important;
+    border-color: white !important;
 }
 .bg-gris:hover{
-    background-color: rgb(114, 185, 160);
+    background-color: rgb(114, 185, 160) !important;
     transition-duration: 10ms;
-    border-color: rgba(7, 231, 157, 0.842);
+    border-color: rgba(7, 231, 157, 0.842) !important;
 }
 .margin{
     margin-right: 2px;
